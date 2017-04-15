@@ -13,4 +13,8 @@ function MainCtrl(User, Advert, Offer, Message, $rootScope, $state) {
     vm.message = err.data.message;
     $state.go('login');
   });
+  $rootScope.$on('$stateChangeSuccess', () => {
+    if(vm.stateHasChanged) vm.message = null;
+    if(!vm.stateHasChanged) vm.stateHasChanged = true;
+  });
 }
