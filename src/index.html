@@ -9,14 +9,29 @@
     <!-- endinject -->
   </head>
   <body ng-controller="MainCtrl as main">
-    {{ 2 + 3 }}
-    <div class="outline">
-    {{ main.users }}
-  </div>
-    <div class="outline">
-    {{ main.adverts }}
-  </div>
-
-
+    <header>
+      <nav>
+        <a ui-sref="users">Users</a>
+      </nav>
+    </header>
+    <main>
+      {{ 2 + 3 }}
+      <div class="outline">
+          <h1>Users</h1>
+        {{ main.users }}
+      </div>
+      <div class="outline">
+        <h1>Adverts</h1>
+        {{ main.adverts }}
+      </div>
+      <div class="outline">
+        <h1>Offers</h1>
+        {{ main.offers }}
+      </div>
+      <div class="outline">
+        <h1>Messages</h1>
+        {{ main.messages}}
+      </div>
+    </main>
   </body>
 </html>
