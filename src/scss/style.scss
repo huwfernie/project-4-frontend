@@ -1,1 +1,15 @@
 // Import all of your scss files here
+
+body {
+  width: 80vw;
+  text-align: center;
+  margin: 0 auto;
+
+}
+
+.outline {
+  margin-top: 30px;
+  border: 2px solid blue;
+  border-radius: 30px;
+  overflow: hidden;
+}
