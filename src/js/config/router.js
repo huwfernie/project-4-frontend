@@ -30,6 +30,16 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/offers',
       templateUrl: 'js/views/offers/index.html',
       controller: 'offersIndexCtrl as offersIndex'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'js/views/auth/login.html',
+      controller: 'AuthCtrl as auth'
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'js/views/auth/register.html',
+      controller: 'AuthCtrl as auth'
     });
 
   $urlRouterProvider.otherwise('/');
