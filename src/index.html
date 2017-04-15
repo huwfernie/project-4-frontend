@@ -12,27 +12,29 @@
   <body ng-controller="MainCtrl as main">
     <header>
       <nav>
-        <a ui-sref="users">Users</a>
+        <a ui-sref="messagesIndex">Messages</a>
+        <a ui-sref="usersIndex">Users</a>
+        <a ui-sref="advertsIndex">Adverts</a>
+        <a ui-sref="offersIndex">Offers</a>
       </nav>
     </header>
-    <main>
-      {{ 2 + 3 }}
-      <div class="outline">
-          <h1>Users</h1>
-        {{ main.users }}
-      </div>
-      <div class="outline">
-        <h1>Adverts</h1>
-        {{ main.adverts }}
-      </div>
-      <div class="outline">
-        <h1>Offers</h1>
-        {{ main.offers }}
-      </div>
-      <div class="outline">
-        <h1>Messages</h1>
-        {{ main.messages}}
-      </div>
-    </main>
+    {{ 2 + 3 }}
+    <div class="outline">
+        <h1>Users</h1>
+      {{ main.users }}
+    </div>
+    <div class="outline">
+      <h1>Adverts</h1>
+      {{ main.adverts }}
+    </div>
+    <div class="outline">
+      <h1>Offers</h1>
+      {{ main.offers }}
+    </div>
+    <div class="outline">
+      <h1>Messages</h1>
+      {{ main.messages}}
+    </div>
+    <main ui-view></main>
   </body>
 </html>
