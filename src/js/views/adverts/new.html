@@ -1,0 +1,17 @@
+<h1>advertsnew</h1>
+
+<form ng-submit="advertsNew.create()">
+  <label for="title">Name</label>
+  <input type="text" id="name" name="name" ng-model="advertsNew.advert.title">
+
+  <label for="body">body</label>
+  <input type="text" id="body" name="body" ng-model="advertsNew.advert.body">
+
+  <label for="valueMax">valueMax</label>
+  <input type="number" id="valueMax" name="valueMax" ng-model="advertsNew.advert.valueMax">
+
+  <label for="valueMin">valueMin</label>
+  <input type="number" id="valueMin" name="valueMin" ng-model="advertsNew.advert.valueMin">
+
+  <button>Create</button>
+</form>

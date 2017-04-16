@@ -1,11 +1,11 @@
-<form ng-submit="login.submit()">
+<form ng-submit="auth.login()">
   <div>
     <label for="email">Email</label>
-    <input type="text" name="email" id="email" ng-model="login.credentials.email">
+    <input type="text" name="email" id="email" ng-model="auth.credentials.email">
   </div>
   <div>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" ng-model="login.credentials.password">
+    <input type="password" name="password" id="password" ng-model="auth.credentials.password">
   </div>
 
   <button>Login</button>
