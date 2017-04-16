@@ -1,1 +1,6 @@
 <h1> adverts index</h1>
+<div ng-repeat="advert in advertsIndex.adverts" class="outline">
+  {{ advert }}
+  {{ advert.id }}
+  <button ui-sref="advertsShow({id: advert.id})">View</button>
+</div>

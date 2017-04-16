@@ -12,9 +12,14 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/static/home.html'
     })
     .state('advertsNew', {
-      url: '/adverts',
+      url: '/advertsNew',
       templateUrl: 'js/views/adverts/new.html',
       controller: 'advertsNewCtrl as advertsNew'
+    })
+    .state('advertsShow', {
+      url: '/advertsShow',
+      templateUrl: 'js/views/adverts/show.html',
+      controller: 'advertsShowCtrl as advertsShow'
     })// this is where temp. changes start
     .state('messagesIndex', {
       url: '/messages',
