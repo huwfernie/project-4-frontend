@@ -46,7 +46,11 @@ function advertsShowCtrl($stateParams, Advert, Offer, $http) {
   .$promise
   .then((temp) => {
     vm.advert = temp;
-    $http.get(`http://localhost:3000/api/offers/search?search=${temp.title}`)
+    $http({
+      url: '//localhost:3000/api/offers/search',
+      method: 'GET',
+      params: {search: temp.title, valueMin: temp.valueMin, valueMax: temp.valueMax}
+    })
     .then((response) => {
       vm.offers = response.data;
     });

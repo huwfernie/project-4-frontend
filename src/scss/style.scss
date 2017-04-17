@@ -14,3 +14,13 @@ body {
   padding: 5px 15px;
   overflow: hidden;
 }
+
+.results {
+  @extend .outline;
+  .outline {
+    text-align: left;
+    .thumbnail {
+      height: 150px;
+    }
+  }
+}
