@@ -1,4 +1,17 @@
 <h1>adverts show</h1>
-{{ 2 + 2}}
-{{ advertsShow.advert }}
-<button ng-click="advertsShow.delete()">Delete</button>
+
+<div class="outline">
+  <h1>Your Advert</h1>
+  <strong>Title </strong>{{ advertsShow.advert.title }}<br>
+  <strong>Body </strong>{{ advertsShow.advert.body }}<br>
+  <strong>Price: £ </strong>{{ advertsShow.advert.valueMax }} - {{ advertsShow.advert.valueMin }}.
+  <!-- {{ advertsShow.advert }} -->
+  <button ui-sref="advertsEdit({id: advertsShow.advert.id})">Edit</button>
+    <!-- <button ng-click="advert.delete()">Delete</button> -->
+</div>
+<div class="outline">
+  <h1>Results</h1>
+  <div class="outline" ng-repeat="offer in advertsShow.offers">
+    {{ offer }}
+  </div>
+</div>

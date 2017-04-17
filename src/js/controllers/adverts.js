@@ -2,7 +2,8 @@ angular
   .module('yabee')
   .controller('advertsIndexCtrl', advertsIndexCtrl)
   .controller('advertsNewCtrl', advertsNewCtrl)
-  .controller('advertsShowCtrl', advertsShowCtrl);
+  .controller('advertsShowCtrl', advertsShowCtrl)
+  .controller('advertsEditCtrl', advertsEditCtrl);
 
 advertsIndexCtrl.$inject = ['User', 'Advert', 'Offer', 'Message'];
 function advertsIndexCtrl(User, Advert, Offer, Message) {
@@ -38,20 +39,39 @@ function advertsNewCtrl(User, Advert, Offer, Message, $state, $auth) {
   vm.create = advertsCreate;
 }
 
-advertsShowCtrl.$inject = ['$stateParams', 'Advert', '$state'];
-function advertsShowCtrl($stateParams, Advert, $state) {
+advertsShowCtrl.$inject = ['$stateParams', 'Advert', 'Offer', '$http'];
+function advertsShowCtrl($stateParams, Advert, Offer, $http) {
   const vm = this;
-  // I can't get this working with $stateParams for now!
-  // vm.advert = Advert.get($stateParams);
-  vm.advert = Advert.get({id: 4});
+  Advert.get($stateParams)
+  .$promise
+  .then((temp) => {
+    vm.advert = temp;
+    $http.get(`http://localhost:3000/api/offers/search?search=${temp.title}`)
+    .then((response) => {
+      vm.offers = response.data;
+    });
+  });
+}
+
+advertsEditCtrl.$inject = ['$stateParams', 'Advert', '$state'];
+function advertsEditCtrl($stateParams, Advert, $state) {
+  const vm = this;
+
+  vm.advert = Advert.get($stateParams);
 
   function advertsDelete() {
     vm.advert
       .$remove()
       .then(() => $state.go('advertsIndex'));
   }
-
   vm.delete = advertsDelete;
 
+  function advertsUpdate() {
+    Advert
+      .update({id: vm.advert.id, advert: vm.advert })
+      .$promise
+      .then(() => $state.go('advertsShow', { id: vm.advert.id }));
+  }
 
+  vm.update = advertsUpdate;
 }

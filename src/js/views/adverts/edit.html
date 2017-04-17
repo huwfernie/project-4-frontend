@@ -1,0 +1,26 @@
+<h1>adverts edit</h1>
+
+<strong>Title </strong>{{ advertsEdit.advert.title }}<br>
+<strong>Body </strong>{{ advertsEdit.advert.body }}<br>
+<strong>Price: £ </strong>{{ advertsEdit.advert.valueMax }} - {{ advertsEdit.advert.valueMin }}.
+<!-- {{ advertsEdit.advert }} -->
+
+<form ng-submit="advertsEdit.update()">
+  <label for="title">Name</label>
+  <input type="text" id="name" name="name" ng-model="advertsEdit.advert.title">
+
+  <label for="body">body</label>
+  <input type="text" id="body" name="body" ng-model="advertsEdit.advert.body">
+
+  <label for="valueMax">valueMax</label>
+  <input type="number" id="valueMax" name="valueMax" ng-model="advertsEdit.advert.valueMax">
+
+  <label for="valueMin">valueMin</label>
+  <input type="number" id="valueMin" name="valueMin" ng-model="advertsEdit.advert.valueMin">
+
+  <button>Update</button>
+</form>
+
+<p>
+  <button ng-click="advertsEdit.delete()">Delete</button>
+</p>
