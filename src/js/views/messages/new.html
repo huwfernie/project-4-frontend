@@ -1,5 +1,23 @@
-<h1> messages new</h1>
-a message about ...
-<p ng-if="!main.isAuthenticated()">Register</p>
-<p ng-if="main.isAuthenticated()">Logout</p>
-{{ main.thisOffer }}
+<p></p>
+
+<div class="results">
+  <h1> messages new</h1>
+  a message about ...
+  <div class="outline">
+    <h3>{{ messagesNew.offer.title }}</h3>
+    {{ messagesNew.offer.body }}
+    <h4>Price: £{{ messagesNew.offer.value }}</h4>
+    <image class="thumbnail" src="{{ messagesNew.offer.image }}"></image>
+  </div>
+
+  <div class="outline">
+    <form ng-submit="messagesNew.create()" id="messageForm">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" ng-model="messagesNew.message.subject">
+
+      <textarea rows="4" cols="90" name="comment" ng-model="messagesNew.message.body" form="messageForm">Enter text here...</textarea>
+      <button>Send</button>
+    </form>
+  </div>
+
+</div>
