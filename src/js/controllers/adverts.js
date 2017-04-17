@@ -39,8 +39,8 @@ function advertsNewCtrl(User, Advert, Offer, Message, $state, $auth) {
   vm.create = advertsCreate;
 }
 
-advertsShowCtrl.$inject = ['$stateParams', 'Advert', 'Offer', '$http'];
-function advertsShowCtrl($stateParams, Advert, Offer, $http) {
+advertsShowCtrl.$inject = ['$stateParams', 'Advert', 'Offer', '$http', '$state', 'tempService'];
+function advertsShowCtrl($stateParams, Advert, Offer, $http, $state, tempService) {
   const vm = this;
   Advert.get($stateParams)
   .$promise
@@ -55,6 +55,12 @@ function advertsShowCtrl($stateParams, Advert, Offer, $http) {
       vm.offers = response.data;
     });
   });
+
+  vm.messagesNew = messagesNew;
+  function messagesNew(x) {
+    tempService.currentOffer = x;
+    $state.go('messagesNew');
+  }
 }
 
 advertsEditCtrl.$inject = ['$stateParams', 'Advert', '$state'];
