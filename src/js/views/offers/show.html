@@ -1,0 +1,23 @@
+<h1>offers show</h1>
+
+<div class="outline">
+  <h1>Your Offer</h1>
+  <strong>Title </strong>{{ offersShow.offer.title }}<br>
+  <strong>Body </strong>{{ offersShow.offer.body }}<br>
+  <strong>Price: £ </strong>{{ offersShow.offer.value }}.
+  <!-- {{ offersShow.offer }} -->
+  <button ui-sref="offersEdit({id: offersShow.offer.id})">Edit</button>
+
+</div>
+<div class="results">
+  <h1>Matching Results</h1>
+  Filter by price -- Filter by distance
+  <div class="outline" ng-repeat="offer in offersShow.offers">
+    <h3>{{ offer.title }}</h3>
+    {{ offer.body }}
+    <h4>Price: £{{ offer.value }}</h4>
+    <image class="thumbnail" src="{{ offer.image }}"></image>
+    <!-- <a ui-sref="messagesNew({offerId :offer.id})"><button>Contact this seller</button></a> -->
+    <a ng-click="offersShow.messagesNew(offer)"><button>Contact this seller</button></a>
+  </div>
+</div>

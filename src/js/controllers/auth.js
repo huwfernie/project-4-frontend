@@ -14,8 +14,8 @@ function AuthCtrl($auth, $state) {
   vm.register = register;
 
   function login() {
-    $auth.login(vm.credentials)
-      .then(() => $state.go('home'));
+    $auth.login(vm.credentials);
+    $state.go('home');
   }
 
   vm.login = login;

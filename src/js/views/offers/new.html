@@ -1,0 +1,21 @@
+<h1>offers new</h1>
+
+
+
+<form ng-submit="offersNew.create()">
+
+  <label for="title">Name</label>
+  <input type="text" id="name" name="name" ng-model="offersNew.offer.title"><br>
+
+  <label for="body">body</label><br>
+  <textarea rows="4" cols="90" name="comment" ng-model="offersNew.offer.body">.</textarea><br>
+
+  <label for="valueMax">value</label>
+  <input type="number" id="valueMax" name="valueMax" ng-model="offersNew.offer.value">
+
+  <button>Create advert</button>
+</form>
+
+<p>
+  <button ui-sref="home">Discard</button>
+</p>

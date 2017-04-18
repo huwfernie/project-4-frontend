@@ -7,9 +7,28 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
+  // Statics ------------------------------------------------------
+
     .state('home', {
       url: '/',
       templateUrl: 'js/views/static/home.html'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'js/views/auth/login.html',
+      controller: 'AuthCtrl as auth'
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'js/views/auth/register.html',
+      controller: 'AuthCtrl as auth'
+    })
+    // Advert ------------------------------------------------------
+
+    .state('advertsIndex', {
+      url: '/adverts',
+      templateUrl: 'js/views/adverts/index.html',
+      controller: 'advertsIndexCtrl as advertsIndex'
     })
     .state('advertsNew', {
       url: '/advertsNew',
@@ -25,7 +44,9 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/adverts/:id/edit',
       templateUrl: 'js/views/adverts/edit.html',
       controller: 'advertsEditCtrl as advertsEdit'
-    })// this is where temp. changes start
+    })
+    // Messages ------------------------------------------------------
+
     .state('messagesNew', {
       url: '/messagesNew',
       templateUrl: 'js/views/messages/new.html',
@@ -36,31 +57,42 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/messages/index.html',
       controller: 'messagesIndexCtrl as messagesIndex'
     })
+  // Users ------------------------------------------------------
+
     .state('usersIndex', {
       url: '/users',
       templateUrl: 'js/views/users/index.html',
       controller: 'usersIndexCtrl as usersIndex'
     })
-    .state('advertsIndex', {
-      url: '/adverts',
-      templateUrl: 'js/views/adverts/index.html',
-      controller: 'advertsIndexCtrl as advertsIndex'
+    .state('usersShow', {
+      url: '/users/:id',
+      templateUrl: 'js/views/users/show.html',
+      controller: 'usersShowCtrl as usersShow'
     })
+    // Offers ---------------------------------------------------------
+
     .state('offersIndex', {
       url: '/offers',
       templateUrl: 'js/views/offers/index.html',
       controller: 'offersIndexCtrl as offersIndex'
     })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'js/views/auth/login.html',
-      controller: 'AuthCtrl as auth'
+    .state('offersShow', {
+      url: '/offers/:id',
+      templateUrl: 'js/views/offers/show.html',
+      controller: 'offersShowCtrl as offersShow'
     })
-    .state('register', {
-      url: '/register',
-      templateUrl: 'js/views/auth/register.html',
-      controller: 'AuthCtrl as auth'
-    });
+    .state('offersEdit', {
+      url: '/offers/:id/edit',
+      templateUrl: 'js/views/offers/edit.html',
+      controller: 'offersEditCtrl as offersEdit'
+    })
+    .state('offersNew', {
+      url: '/offersNew',
+      templateUrl: 'js/views/offers/new.html',
+      controller: 'offersNewCtrl as offersNew'
+    })
+    // End of Offers -----------------------------------------------------
+    ;
 
   $urlRouterProvider.otherwise('/');
 }

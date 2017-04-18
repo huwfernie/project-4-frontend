@@ -1,15 +1,15 @@
 angular
   .module('yabee')
-  .service('tempService', tempService);
+  .service('offerService', offerService);
 
-tempService.$inject = [];
-function tempService() {
+offerService.$inject = [];
+function offerService() {
   const vm = this;
   vm.currentOffer =  '' ;
 }
 //
-// tempService.$inject = ['$window'];
-// function tempService($window) {
+// offerService.$inject = ['$window'];
+// function offerService($window) {
 //   this.getTrack = function getTrack() {
 //     return JSON.parse($window.localStorage.getItem('track'));
 //   };

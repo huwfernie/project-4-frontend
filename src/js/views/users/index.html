@@ -1,1 +1,9 @@
-<h1> users index</h1>
+<h1> users index - this is only for testing</h1>
+
+<div ng-repeat="user in usersIndex.users" class="outline">
+  <!-- {{ user }} -->
+  <strong>id: </strong>{{ user.id }}<br>
+  <strong>username: </strong>{{ user.username }}<br>
+  <strong>email: </strong>{{ user.email }}<br>
+  <button ui-sref="usersShow({id: user.id})">users Show</button>
+</div>

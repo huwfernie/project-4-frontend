@@ -5,49 +5,38 @@ angular
   .controller('advertsShowCtrl', advertsShowCtrl)
   .controller('advertsEditCtrl', advertsEditCtrl);
 
-advertsIndexCtrl.$inject = ['User', 'Advert', 'Offer', 'Message'];
-function advertsIndexCtrl(User, Advert, Offer, Message) {
+advertsIndexCtrl.$inject = ['Advert'];
+function advertsIndexCtrl(Advert) {
   const vm = this;
-  vm.users = User.query();
   vm.adverts = Advert.query();
-  vm.offers = Offer.query();
-  vm.messages = Message.query();
 }
 
-advertsNewCtrl.$inject = ['User', 'Advert', 'Offer', 'Message', '$state', '$auth'];
-function advertsNewCtrl(User, Advert, Offer, Message, $state, $auth) {
+advertsNewCtrl.$inject = ['User', 'Advert', '$state', '$auth'];
+function advertsNewCtrl(User, Advert, $state, $auth) {
   const vm = this;
   vm.advert = {};
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-
-
-  vm.users = User.query();
-  vm.adverts = Advert.query();
-  vm.offers = Offer.query();
-  vm.messages = Message.query();
 
   function advertsCreate() {
     vm.advert.user_id = vm.currentUser.id;
     Advert
       .save({ advert: vm.advert })
       .$promise
-      .then(() => $state.go('advertsIndex'));
-      // I would like to go to the show page straight from advertsNew - but I can't find the id!
-      // .then(() => $state.go('advertsShow', { id: vm.advert.id }));
+      .then((advert) => $state.go('advertsShow', { id: advert.id }));
   }
   vm.create = advertsCreate;
 }
 
-advertsShowCtrl.$inject = ['$stateParams', 'Advert', 'Offer', '$http', '$state', 'tempService'];
-function advertsShowCtrl($stateParams, Advert, Offer, $http, $state, tempService) {
+advertsShowCtrl.$inject = ['API_URL', '$stateParams', 'Advert', '$http', '$state', 'offerService'];
+function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerService) {
   const vm = this;
   Advert.get($stateParams)
   .$promise
   .then((temp) => {
     vm.advert = temp;
     $http({
-      url: '//localhost:3000/api/offers/search',
+      url: `${API_URL}/offers/search`,
       method: 'GET',
       params: {search: temp.title, valueMin: temp.valueMin, valueMax: temp.valueMax}
     })
@@ -55,10 +44,9 @@ function advertsShowCtrl($stateParams, Advert, Offer, $http, $state, tempService
       vm.offers = response.data;
     });
   });
-
   vm.messagesNew = messagesNew;
   function messagesNew(x) {
-    tempService.currentOffer = x;
+    offerService.currentOffer = x;
     $state.go('messagesNew');
   }
 }

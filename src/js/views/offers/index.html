@@ -1,1 +1,9 @@
 <h1> offers index </h1>
+
+<div ng-repeat="offer in offersIndex.offers" class="results">
+  <!-- {{ offer }} -->
+  <strong>Title </strong>{{ offer.title }}<br>
+  <strong>Body </strong>{{ offer.body }}<br>
+  <strong>Price: £ </strong>{{ offer.value }}.
+  <button ui-sref="offersShow({id: offer.id})">offer Show</button>
+</div>

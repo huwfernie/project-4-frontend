@@ -1,9 +1,47 @@
 <h1>users Show</h1>
 
-print username
+<div class="results">
+  <strong>Your Account</strong>
+  <div class="outline">
+    <strong>Username: </strong>{{ usersShow.currentUser.username }}<br>
+    <strong>Email: </strong>{{ usersShow.currentUser.email }}<br>
+  </div>
+</div>
 
-list of messages
+<div class="results">
+  <strong>messages sent</strong>
+  <div class="outline" ng-repeat="message in usersShow.currentUser.messages_sent">
+    <strong>Subject: </strong>{{ message.subject }}<br>
+    <strong>Body: </strong>{{ message.body }}
+  </div>
+</div>
 
-list of adverts
+<div class="results">
+  <strong>messages recieved</strong>
+  <div class="outline" ng-repeat="message in usersShow.currentUser.messages_recieved">
+    <strong>Subject: </strong>{{ message.subject }}<br>
+    <strong>Body: </strong>{{ message.body }}
+    <!--  add reply to message funciton -->
+  </div>
+</div>
 
-list of offers
+<div class="results">
+  <strong>adverts - What I want to buy</strong>
+  <div class="outline" ng-repeat="advert in usersShow.currentUser.adverts">
+    <strong>Title: </strong>{{ advert.title }}<br>
+    <strong>Body: </strong>{{ advert.body }}<br>
+    <strong>Price range</strong>{{ advert.valueMin }} to {{ advert.valueMax }}
+    <button ui-sref="advertsShow({id: advert.id})">View Details</button>
+  </div>
+</div>
+
+<div class="results">
+  <strong>offers - Things I'm selling</strong>
+  <div class="outline" ng-repeat="offer in usersShow.currentUser.offers">
+    <h3>{{ offer.title }}</h3>
+    <p>{{ offer.body }}</p>
+    <p>Price: £ {{ offer.value }}.</p>
+    <img class="thumbnail" ng-src="{{ offer.image }}" alt="Listing Image" />
+    <button ui-sref="offersShow({id: offer.id})">View Details</button>
+  </div>
+</div>
