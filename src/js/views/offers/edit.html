@@ -1,20 +1,26 @@
 <h1>offers edit</h1>
 
-<strong>Title </strong>{{ offersEdit.offer.title }}<br>
-<strong>Body </strong>{{ offersEdit.offer.body }}<br>
-<strong>Price: £ </strong>{{ offersEdit.offer.value}}.
+<div class="outline">
+  <strong>Title </strong>{{ offersEdit.offer.title }}<br>
+  <strong>Body </strong>{{ offersEdit.offer.body }}<br>
+  <strong>Price: £ </strong>{{ offersEdit.offer.value}}.<br>
+  <img class="thumbnail" ng-src="{{ offersEdit.offer.image }}">
+</div>
 <!-- {{ offersEdit.offer }} -->
 
 <form ng-submit="offersEdit.update()">
 
   <label for="title">Name</label>
   <input type="text" id="name" name="name" ng-model="offersEdit.offer.title">
-
-  <label for="body">body</label>
-  <textarea rows="4" cols="90" name="comment" ng-model="offersEdit.offer.body">.</textarea>
-
-
-  <label for="valueMax">valueMax</label>
+  <p>
+    <label for="body">body</label>
+    <textarea rows="4" cols="90" name="comment" ng-model="offersEdit.offer.body">.</textarea><br>
+  </p>
+  <p>
+    <label for="image">Image</label>
+    <input type="text" id="image" name="image" ng-model="offersEdit.offer.image">
+  </p>
+  <label for="value">valueMax</label>
   <input type="number" id="valueMax" name="valueMax" ng-model="offersEdit.offer.value">
 
   <button>Update</button>

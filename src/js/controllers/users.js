@@ -12,6 +12,7 @@ function usersIndexCtrl(User) {
 usersShowCtrl.$inject = ['User', '$auth', '$http', '$stateParams', 'offerService', 'advertService', '$state', 'Offer', 'Message'];
 function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertService, $state, Offer, Message) {
   const vm = this;
+  vm.toggleReply = false;
 
 
   User.get($stateParams)
@@ -28,6 +29,7 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
   vm.setupReply = setupReply;
   function setupReply(message) {
     console.log('ReplyToOffer');
+    vm.toggleReply = !vm.toggleReply;
     vm.reply = {
       'subject': `re: ${message.subject}`,
       'body': 'Your text here',
@@ -38,6 +40,7 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
     };
   }
 
+  // this saves the reply message and then resets the reply to be an empty {}
   vm.replyToMessage = replyToMessage;
   function replyToMessage() {
     console.log('replyToMessage');
@@ -47,6 +50,10 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
       .then(() => vm.reply = {} );
   }
 
+  vm.clearReply = clearReply;
+  function clearReply() {
+    vm.reply = {};
+  }
 
   // probably won't need this much longer
   vm.messagesReplyToAdvert = messagesReplyToAdvert;

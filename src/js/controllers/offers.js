@@ -16,32 +16,7 @@ function offersShowCtrl(Offer, $stateParams) {
   const vm = this;
 
   vm.offer = Offer.get($stateParams);
-
 }
-// ---------------------------------------------
-// advertsShowCtrl.$inject = ['API_URL', '$stateParams', 'Advert', '$http', '$state', 'offerService'];
-// function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerService) {
-//   const vm = this;
-//   Advert.get($stateParams)
-//   .$promise
-//   .then((temp) => {
-//     vm.advert = temp;
-//     $http({
-//       url: `${API_URL}/offers/search`,
-//       method: 'GET',
-//       params: {search: temp.title, valueMin: temp.valueMin, valueMax: temp.valueMax}
-//     })
-//     .then((response) => {
-//       vm.offers = response.data;
-//     });
-//   });
-//   vm.messagesNew = messagesNew;
-//   function messagesNew(offer) {
-//     offerService.currentOffer = offer;
-//     $state.go('messagesNew');
-//   }
-// }
-// --------------------------------------------
 
 offersEditCtrl.$inject = ['Offer', '$stateParams', '$state'];
 function offersEditCtrl(Offer, $stateParams, $state) {

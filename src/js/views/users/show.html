@@ -9,26 +9,13 @@
   </div>
 </div>
 
-<!-- <div class="results">
-  <strong>messages joined</strong>
-  <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'">
-    <strong>Subject: </strong>{{ message.subject }}<br>
-    <strong>Body: </strong>{{ message.body }}<br>
-    <strong>Created at: </strong>{{ message.created_at }}<br>
-    <strong>Sender id: </strong>{{ message.sender_id }}<br>
-    <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
-    <strong>advert_id: </strong>{{ message.advert_id }}<br>
-    <strong>offer_id: </strong>{{ message.offer_id }}<br>
-  </div>
-</div> -->
-
 <div class="results">
   <strong>adverts - What I want to buy</strong>
   <div class="outline" ng-repeat="advert in usersShow.currentUser.adverts">
     <strong>Title: </strong>{{ advert.title }}<br>
     <strong>Body: </strong>{{ advert.body }}<br>
     <strong>id: </strong>{{ advert.id }}<br>
-    <strong>Price range</strong>{{ advert.valueMin }} to {{ advert.valueMax }}
+    <strong>Price range: </strong>£{{ advert.valueMin }} to  £{{ advert.valueMax }}.<br>
     <button ui-sref="advertsShow({id: advert.id})">View Details</button>
     <!-- Messages Section -->
     <div class="results">
@@ -41,12 +28,12 @@
         <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
         <strong>advert_id: </strong>{{ message.advert_id }}<br>
         <strong>offer_id: </strong>{{ message.offer_id }}<br>
-        <a ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.setupReply(message)"><button>Reply</button></a>
+        <button ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.setupReply(message)">Reply</button>
       </div>
     </div>
     <!-- Messages Section -->
     <!-- Reply to Messages section -->
-    <div class="results">
+    <div class="results" ng-show="usersShow.toggleReply">
       <strong>messages reply</strong>
       <form ng-submit="usersShow.replyToMessage()" id="messageForm">
         <label for="subject">Subject</label>
@@ -54,6 +41,7 @@
 
         <textarea rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageForm">Enter text here...</textarea>
         <button>Send</button>
+        <button ng-click="usersShow.clearReply()">Discard</button>
       </form>
       {{ usersShow.reply }}
     </div>
@@ -87,13 +75,13 @@
     </div>
     <!-- Messages section -->
     <!-- Reply to Messages section -->
-    <div class="results">
+    <div class="results" ng-show="usersShow.toggleReply">
       <strong>messages reply</strong>
-      <form ng-submit="usersShow.replyToMessage()" id="messageForm">
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" ng-model="usersShow.reply.subject">
+      <form ng-submit="usersShow.replyToMessage()" id="messageFormOffers">
+        <label for="subjectOffers">Subject</label>
+        <input type="text" id="subjectOffers" name="subject" ng-model="usersShow.reply.subject">
 
-        <textarea rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageForm">Enter text here...</textarea>
+        <textarea rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageFormOffers">Enter text here...</textarea>
         <button>Send</button>
       </form>
       {{ usersShow.reply }}
