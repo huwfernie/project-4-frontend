@@ -5,6 +5,7 @@ angular
 AuthCtrl.$inject = ['$auth', '$state'];
 function AuthCtrl($auth, $state) {
   const vm = this;
+  vm.credentials = {};
 
   function register() {
     $auth.signup(vm.user)
@@ -14,8 +15,8 @@ function AuthCtrl($auth, $state) {
   vm.register = register;
 
   function login() {
-    $auth.login(vm.credentials);
-    $state.go('home');
+    $auth.login(vm.credentials)
+      .then(() => $state.go('home'));
   }
 
   vm.login = login;
