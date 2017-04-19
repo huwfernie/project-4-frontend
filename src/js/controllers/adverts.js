@@ -28,8 +28,8 @@ function advertsNewCtrl(User, Advert, $state, $auth) {
   vm.create = advertsCreate;
 }
 
-advertsShowCtrl.$inject = ['API_URL', '$stateParams', 'Advert', '$http', '$state', 'offerService'];
-function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerService) {
+advertsShowCtrl.$inject = ['API_URL', '$stateParams', 'Advert', '$http', '$state', 'offerService', 'advertService'];
+function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerService, advertService) {
   const vm = this;
   Advert.get($stateParams)
   .$promise
@@ -45,8 +45,9 @@ function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerServ
     });
   });
   vm.messagesNew = messagesNew;
-  function messagesNew(offer) {
+  function messagesNew(offer, advert) {
     offerService.currentOffer = offer;
+    advertService.currentAdvert = advert;
     $state.go('messagesNew');
   }
 }

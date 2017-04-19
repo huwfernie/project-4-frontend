@@ -15,16 +15,16 @@ function messagesIndexCtrl(User, Advert, Offer, Message) {
 messagesNewCtrl.$inject = ['User', 'Advert', 'Offer', 'Message', '$stateParams', 'offerService', 'advertService', '$auth', '$state'];
 function messagesNewCtrl(User, Advert, Offer, Message, $stateParams, offerService, advertService, $auth, $state) {
   const vm = this;
+  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
+
   vm.message = {
     'subject': 'Test',
     'body': 'test',
-    'sender_id': 1,
-    'reciever_id': 2,
+    'sender_id': vm.currentUser.id,
+    'reciever_id': offerService.currentOffer.user_id,
     'advert_id': advertService.currentAdvert.id,
     'offer_id': offerService.currentOffer.id
   };
-
-  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   // get currentOffer from the offerService and set it to vm.offer
   vm.offer = offerService.currentOffer;
