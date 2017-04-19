@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<div class="results">
+<!-- <div class="results">
   <strong>messages joined</strong>
   <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'">
     <strong>Subject: </strong>{{ message.subject }}<br>
@@ -20,7 +20,7 @@
     <strong>advert_id: </strong>{{ message.advert_id }}<br>
     <strong>offer_id: </strong>{{ message.offer_id }}<br>
   </div>
-</div>
+</div> -->
 
 <div class="results">
   <strong>adverts - What I want to buy</strong>
@@ -68,6 +68,7 @@
         <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
         <strong>advert_id: </strong>{{ message.advert_id }}<br>
         <strong>offer_id: </strong>{{ message.offer_id }}<br>
+        <a ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.messagesNew(offer)"><button>Reply</button></a>
       </div>
     </div>
     <!-- Old -->
@@ -88,12 +89,11 @@
 <div class="results">
   <strong>messages recieved</strong>
   <div class="outline messages_recieved" ng-repeat="message in usersShow.currentUser.messages_recieved">
-      {{ message }}<br>
+    <!-- {{ message }}<br> -->
     <strong>Subject: </strong>{{ message.subject }}<br>
     <strong>Body: </strong>{{ message.body }}<br>
     <strong>advert_id: </strong>{{ message.advert_id }}<br>
     <strong>offer_id: </strong>{{ message.offer_id }}<br>
-
     <!-- this isn't finished (offer)!! -->
     <a ng-click="usersShow.messagesNew(offer)"><button>Reply</button></a>
   </div>

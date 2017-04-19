@@ -45,8 +45,8 @@ function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerServ
     });
   });
   vm.messagesNew = messagesNew;
-  function messagesNew(x) {
-    offerService.currentOffer = x;
+  function messagesNew(offer) {
+    offerService.currentOffer = offer;
     $state.go('messagesNew');
   }
 }
