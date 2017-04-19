@@ -16,25 +16,9 @@
     <strong>Body: </strong>{{ message.body }}<br>
     <strong>Created at: </strong>{{ message.created_at }}<br>
     <strong>Sender id: </strong>{{ message.sender_id }}<br>
-    <strong>Reciever id: </strong>{{ message.reciever_id }}
-
-  </div>
-</div>
-
-<div class="results">
-  <strong>messages sent</strong>
-  <div class="outline messages_sent" ng-repeat="message in usersShow.currentUser.messages_sent">
-    <strong>Subject: </strong>{{ message.subject }}<br>
-    <strong>Body: </strong>{{ message.body }}
-  </div>
-</div>
-
-<div class="results">
-  <strong>messages recieved</strong>
-  <div class="outline messages_recieved" ng-repeat="message in usersShow.currentUser.messages_recieved">
-    <strong>Subject: </strong>{{ message.subject }}<br>
-    <strong>Body: </strong>{{ message.body }}
-    <!--  add reply to message funciton -->
+    <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
+    <strong>advert_id: </strong>{{ message.advert_id }}<br>
+    <strong>offer_id: </strong>{{ message.offer_id }}<br>
   </div>
 </div>
 
@@ -43,18 +27,74 @@
   <div class="outline" ng-repeat="advert in usersShow.currentUser.adverts">
     <strong>Title: </strong>{{ advert.title }}<br>
     <strong>Body: </strong>{{ advert.body }}<br>
+    <strong>id: </strong>{{ advert.id }}<br>
     <strong>Price range</strong>{{ advert.valueMin }} to {{ advert.valueMax }}
     <button ui-sref="advertsShow({id: advert.id})">View Details</button>
+    <!-- Old -->
+    <div class="results">
+      <strong>messages joined</strong>
+      <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="advert.id == message.advert_id">
+        <strong>Subject: </strong>{{ message.subject }}<br>
+        <strong>Body: </strong>{{ message.body }}<br>
+        <strong>Created at: </strong>{{ message.created_at }}<br>
+        <strong>Sender id: </strong>{{ message.sender_id }}<br>
+        <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
+        <strong>advert_id: </strong>{{ message.advert_id }}<br>
+        <strong>offer_id: </strong>{{ message.offer_id }}<br>
+      </div>
+    </div>
+    <!-- Old -->
   </div>
 </div>
 
 <div class="results">
   <strong>offers - Things I'm selling</strong>
   <div class="outline" ng-repeat="offer in usersShow.currentUser.offers">
+    <!-- {{ offer }} -->
     <h3>{{ offer.title }}</h3>
     <p>{{ offer.body }}</p>
+    <strong>id:</strong>{{ offer.id }}<br>
     <p>Price: £ {{ offer.value }}.</p>
     <img class="thumbnail" ng-src="{{ offer.image }}" alt="Listing Image" />
     <button ui-sref="offersShow({id: offer.id})">View Details</button>
+    <!-- Old -->
+    <div class="results">
+      <strong>messages joined</strong>
+      <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="offer.id == message.offer_id">
+        <strong>Subject: </strong>{{ message.subject }}<br>
+        <strong>Body: </strong>{{ message.body }}<br>
+        <strong>Created at: </strong>{{ message.created_at }}<br>
+        <strong>Sender id: </strong>{{ message.sender_id }}<br>
+        <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
+        <strong>advert_id: </strong>{{ message.advert_id }}<br>
+        <strong>offer_id: </strong>{{ message.offer_id }}<br>
+      </div>
+    </div>
+    <!-- Old -->
+  </div>
+</div>
+
+
+<div class="results">
+  <strong>messages sent</strong>
+  <div class="outline messages_sent" ng-repeat="message in usersShow.currentUser.messages_sent">
+    <strong>Subject: </strong>{{ message.subject }}<br>
+    <strong>Body: </strong>{{ message.body }}<br>
+    <strong>advert_id: </strong>{{ message.advert_id }}<br>
+    <strong>offer_id: </strong>{{ message.offer_id }}<br>
+  </div>
+</div>
+
+<div class="results">
+  <strong>messages recieved</strong>
+  <div class="outline messages_recieved" ng-repeat="message in usersShow.currentUser.messages_recieved">
+      {{ message }}<br>
+    <strong>Subject: </strong>{{ message.subject }}<br>
+    <strong>Body: </strong>{{ message.body }}<br>
+    <strong>advert_id: </strong>{{ message.advert_id }}<br>
+    <strong>offer_id: </strong>{{ message.offer_id }}<br>
+
+    <!-- this isn't finished (offer)!! -->
+    <a ng-click="usersShow.messagesNew(offer)"><button>Reply</button></a>
   </div>
 </div>
