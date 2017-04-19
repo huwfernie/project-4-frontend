@@ -5,21 +5,25 @@
   <div class="outline">
     <strong>Username: </strong>{{ usersShow.currentUser.username }}<br>
     <strong>Email: </strong>{{ usersShow.currentUser.email }}<br>
+    <strong>My user id: </strong>{{ usersShow.currentUser.id }}<br>
   </div>
 </div>
 
 <div class="results">
   <strong>messages joined</strong>
-  <div class="outline" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'">
+  <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'">
     <strong>Subject: </strong>{{ message.subject }}<br>
     <strong>Body: </strong>{{ message.body }}<br>
-    <strong>Created at: </strong>{{ message.created_at }}
+    <strong>Created at: </strong>{{ message.created_at }}<br>
+    <strong>Sender id: </strong>{{ message.sender_id }}<br>
+    <strong>Reciever id: </strong>{{ message.reciever_id }}
+
   </div>
 </div>
 
 <div class="results">
   <strong>messages sent</strong>
-  <div class="outline" ng-repeat="message in usersShow.currentUser.messages_sent">
+  <div class="outline messages_sent" ng-repeat="message in usersShow.currentUser.messages_sent">
     <strong>Subject: </strong>{{ message.subject }}<br>
     <strong>Body: </strong>{{ message.body }}
   </div>
@@ -27,7 +31,7 @@
 
 <div class="results">
   <strong>messages recieved</strong>
-  <div class="outline" ng-repeat="message in usersShow.currentUser.messages_recieved">
+  <div class="outline messages_recieved" ng-repeat="message in usersShow.currentUser.messages_recieved">
     <strong>Subject: </strong>{{ message.subject }}<br>
     <strong>Body: </strong>{{ message.body }}
     <!--  add reply to message funciton -->

@@ -29,3 +29,14 @@ body {
     height: 150px;
   }
 }
+
+.messages_sent {
+  border-color: red;
+  margin-right: 80px;
+
+}
+
+.messages_recieved {
+  border-color: green;
+  margin-left: 80px;
+}
