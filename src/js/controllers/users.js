@@ -9,8 +9,8 @@ function usersIndexCtrl(User) {
   vm.users = User.query();
 }
 
-usersShowCtrl.$inject = ['User', '$auth', '$http', '$stateParams', 'offerService', '$state'];
-function usersShowCtrl(User, $auth, $http, $stateParams, offerService, $state) {
+usersShowCtrl.$inject = ['User', '$auth', '$http', '$stateParams', 'offerService', 'advertService', '$state', 'Offer'];
+function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertService, $state, Offer) {
   const vm = this;
 
 
@@ -23,9 +23,22 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, $state) {
     vm.currentUser.messages_recieved.forEach((message) => vm.currentUser.messages.push(message));
   });
 
-  vm.messagesNew = messagesNew;
-  function messagesNew(offer) {
+  vm.messagesReplyToOffer = messagesReplyToOffer;
+  function messagesReplyToOffer(offer, advertId) {
+    console.log('ReplyToOffer');
+    advertService.currentAdvert.id = advertId;
     offerService.currentOffer = offer;
     $state.go('messagesNew');
+  }
+
+  vm.messagesReplyToAdvert = messagesReplyToAdvert;
+  function messagesReplyToAdvert(offerId) {
+    console.log('ReplyToAdvert');
+    Offer.get({id: offerId})
+    .$promise
+    .then((offer)=>  {
+      offerService.currentOffer = offer;
+      $state.go('messagesNew');
+    });
   }
 }

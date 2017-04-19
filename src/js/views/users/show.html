@@ -30,7 +30,7 @@
     <strong>id: </strong>{{ advert.id }}<br>
     <strong>Price range</strong>{{ advert.valueMin }} to {{ advert.valueMax }}
     <button ui-sref="advertsShow({id: advert.id})">View Details</button>
-    <!-- Old -->
+    <!-- Messages Section -->
     <div class="results">
       <strong>messages joined</strong>
       <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="advert.id == message.advert_id">
@@ -41,9 +41,10 @@
         <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
         <strong>advert_id: </strong>{{ message.advert_id }}<br>
         <strong>offer_id: </strong>{{ message.offer_id }}<br>
+        <a ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.messagesReplyToAdvert(message.offer_id)"><button>Reply</button></a>
       </div>
     </div>
-    <!-- Old -->
+    <!-- Messages Section -->
   </div>
 </div>
 
@@ -57,7 +58,7 @@
     <p>Price: £ {{ offer.value }}.</p>
     <img class="thumbnail" ng-src="{{ offer.image }}" alt="Listing Image" />
     <button ui-sref="offersShow({id: offer.id})">View Details</button>
-    <!-- Old -->
+    <!-- Messages section -->
     <div class="results">
       <strong>messages joined</strong>
       <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="offer.id == message.offer_id">
@@ -68,10 +69,10 @@
         <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
         <strong>advert_id: </strong>{{ message.advert_id }}<br>
         <strong>offer_id: </strong>{{ message.offer_id }}<br>
-        <a ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.messagesNew(offer)"><button>Reply</button></a>
+        <a ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.messagesReplyToOffer(offer, message.advert_id)"><button>Reply</button></a>
       </div>
     </div>
-    <!-- Old -->
+    <!-- Messages section -->
   </div>
 </div>
 

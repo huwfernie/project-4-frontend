@@ -12,25 +12,28 @@ function messagesIndexCtrl(User, Advert, Offer, Message) {
   vm.messages = Message.query();
 }
 
-messagesNewCtrl.$inject = ['User', 'Advert', 'Offer', 'Message', '$stateParams', 'offerService', '$auth', '$state'];
-function messagesNewCtrl(User, Advert, Offer, Message, $stateParams, offerService, $auth, $state) {
+messagesNewCtrl.$inject = ['User', 'Advert', 'Offer', 'Message', '$stateParams', 'offerService', 'advertService', '$auth', '$state'];
+function messagesNewCtrl(User, Advert, Offer, Message, $stateParams, offerService, advertService, $auth, $state) {
   const vm = this;
   vm.message = {
     'subject': 'Test',
     'body': 'test',
     'sender_id': 1,
-    'reciever_id': 2
+    'reciever_id': 2,
+    'advert_id': advertService.currentAdvert.id,
+    'offer_id': offerService.currentOffer.id
   };
 
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   // get currentOffer from the offerService and set it to vm.offer
   vm.offer = offerService.currentOffer;
+  console.log(vm.offer);
   vm.message.subject = `re: ${offerService.currentOffer.title}`;
 
   function create() {
     vm.message.sender_id = vm.currentUser.id;
-    vm.message.reciever_id = offerService.currentOffer.id;
+    vm.message.reciever_id = offerService.currentOffer.user_id;
 
     Message
       .save({ message: vm.message})
