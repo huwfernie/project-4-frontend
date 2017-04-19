@@ -1,9 +1,9 @@
 angular
   .module('yabee')
-  .controller('AuthCtrl', AuthCtrl);
+  .controller('authCtrl', authCtrl);
 
-AuthCtrl.$inject = ['$auth', '$state'];
-function AuthCtrl($auth, $state) {
+authCtrl.$inject = ['$auth', '$state'];
+function authCtrl($auth, $state) {
   const vm = this;
   vm.credentials = {};
 
