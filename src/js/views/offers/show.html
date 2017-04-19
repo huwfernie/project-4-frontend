@@ -4,8 +4,8 @@
   <h1>Your Offer</h1>
   <strong>Title </strong>{{ offersShow.offer.title }}<br>
   <strong>Body </strong>{{ offersShow.offer.body }}<br>
-  <strong>Price: £ </strong>{{ offersShow.offer.value }}.
-  <!-- {{ offersShow.offer }} -->
+  <strong>Price: £ </strong>{{ offersShow.offer.value }}.<br>
+  <img class="thumbnail" ng-src="{{ offersShow.offer.image }}">
   <button ui-sref="offersEdit({id: offersShow.offer.id})">Edit</button>
 
 </div>

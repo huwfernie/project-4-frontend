@@ -50,13 +50,6 @@ function offersNewCtrl(Offer, $stateParams, $state, $auth, User) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-  // Offer.create!(title: "Blender that looks like a bicycle"
-  //  body: "A blender that looks like a BIKE"
-  //   I wonder if this will show up in any search results."
-  //    user: mike
-  //     value: 100
-  //      image: "https://i.ebayimg.com/00/s/NzY4WDEwMjQ=/z/LNkAAOSw3utY71gq/$_86.JPG" )
-
   vm.offer = {
     'title': 'TEST',
     'body': 'test',
@@ -74,7 +67,7 @@ function offersNewCtrl(Offer, $stateParams, $state, $auth, User) {
         Offer
           .save({ offer: vm.offer })
           .$promise
-          .then((result) => $state.go('offersShow', { id: result.id })); // this line might not work
+          .then((result) => $state.go('offersShow', { id: result.id }));
       });
   }
   vm.create = create;
