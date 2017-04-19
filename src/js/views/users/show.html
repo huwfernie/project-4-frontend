@@ -9,6 +9,15 @@
 </div>
 
 <div class="results">
+  <strong>messages joined</strong>
+  <div class="outline" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'">
+    <strong>Subject: </strong>{{ message.subject }}<br>
+    <strong>Body: </strong>{{ message.body }}<br>
+    <strong>Created at: </strong>{{ message.created_at }}
+  </div>
+</div>
+
+<div class="results">
   <strong>messages sent</strong>
   <div class="outline" ng-repeat="message in usersShow.currentUser.messages_sent">
     <strong>Subject: </strong>{{ message.subject }}<br>
