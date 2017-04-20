@@ -43,7 +43,10 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
     Message
       .save({ message: vm.reply})
       .$promise
-      .then(() => vm.reply = {} );
+      .then(() => {
+        vm.currentUser.messages.push(vm.reply);
+        vm.reply = {};
+      });
   }
 
   vm.clearReply = clearReply;
