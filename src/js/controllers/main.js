@@ -25,6 +25,15 @@ function MainCtrl(User, $rootScope, $state, $auth) {
     $auth.logout();
     $state.go('login');
   }
-
   vm.logout = logout;
+
+
+  function search() {
+    console.log('search');
+    console.log(vm.query);
+    vm.query;
+
+    $state.go('offersSearch', { query: vm.query }); // Mike Fixed this!
+  }
+  vm.search = search;
 }

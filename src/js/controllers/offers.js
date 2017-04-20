@@ -74,17 +74,21 @@ function offersNewCtrl(Offer, $stateParams, $state, $auth, User) {
   vm.create = create;
 }
 
-offersSearchCtrl.$inject = ['API_URL', '$state', '$http', 'offerService'];
-function offersSearchCtrl(API_URL, $state, $http, offerService) {
+offersSearchCtrl.$inject = ['API_URL', '$state', '$http', '$stateParams'];
+function offersSearchCtrl(API_URL, $state, $http, $stateParams) {
   const vm = this;
 
   $http({
     url: `${API_URL}/offers/search`,
     method: 'GET',
-    params: {search: offerService.query, valueMin: 0, valueMax: 1000000}
+    params: {
+      search: $stateParams.query,
+      valueMin: 0,
+      valueMax: 1000000
+    }
   })
   .then((response) => {
-    offerService.query = '';
+    console.log(response);
     vm.offers = response.data;
   });
 }

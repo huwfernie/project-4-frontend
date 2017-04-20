@@ -93,7 +93,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'offersNewCtrl as offersNew'
     })
     .state('offersSearch', {
-      url: '/offersSearch',
+      url: '/offersSearch/?query',
       templateUrl: 'js/views/offers/search.html',
       controller: 'offersSearchCtrl as offersSearch'
     })

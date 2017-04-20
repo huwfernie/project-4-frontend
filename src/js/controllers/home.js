@@ -4,14 +4,9 @@ angular
 
 
 // this returns all the Offers to display them on the homepage
-homeCtrl.$inject = ['Offer', '$state', 'offerService'];
-function homeCtrl(Offer, $state, offerService) {
+homeCtrl.$inject = ['Offer'];
+function homeCtrl(Offer) {
   const vm = this;
   vm.offers = Offer.query();
 
-  vm.search = search;
-  function search() {
-    offerService.query = vm.query;
-    $state.go('offersSearch');
-  }
 }

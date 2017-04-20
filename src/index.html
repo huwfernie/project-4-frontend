@@ -28,6 +28,12 @@
         <a ui-sref="profile" ng-if="main.isAuthenticated()">Your Profile</a>
       </nav>
     </header>
+    <div class="searchBar">
+      <form ng-submit="main.search()">
+        <input type="text" name="search" placeholder="Search..." ng-model="main.query">
+        <button>Search</button>
+      </form>
+    </div>
     <div class="message" ng-if="main.message">{{ main.message }}</div>
     <div class="container">
       <main ui-view></main>
