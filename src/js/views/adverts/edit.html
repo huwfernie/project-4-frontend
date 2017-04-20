@@ -11,12 +11,13 @@
 
   <label for="body">body</label>
   <textarea rows="4" cols="90" name="comment" ng-model="advertsEdit.advert.body">.</textarea>
+  <p>
+    <label for="valueMin">Price range £ :</label>
+    <input type="number" id="valueMin" name="valueMin" ng-model="advertsEdit.advert.valueMin">
 
-  <label for="valueMax">valueMax</label>
-  <input type="number" id="valueMax" name="valueMax" ng-model="advertsEdit.advert.valueMax">
-
-  <label for="valueMin">valueMin</label>
-  <input type="number" id="valueMin" name="valueMin" ng-model="advertsEdit.advert.valueMin">
+    <label for="valueMax">to</label>
+    <input type="number" id="valueMax" name="valueMax" ng-model="advertsEdit.advert.valueMax">
+  </p>
 
   <button>Update</button>
 </form>

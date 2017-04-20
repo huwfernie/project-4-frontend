@@ -28,9 +28,12 @@ function advertsNewCtrl(User, Advert, $state, $auth) {
   vm.create = advertsCreate;
 }
 
-advertsShowCtrl.$inject = ['API_URL', '$stateParams', 'Advert', '$http', '$state', 'offerService', 'advertService'];
-function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerService, advertService) {
+advertsShowCtrl.$inject = ['API_URL', '$stateParams', 'Advert', '$http', '$state', 'offerService', 'advertService', 'userService'];
+function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerService, advertService, userService) {
   const vm = this;
+
+  vm.currentUser = userService.currentUser;
+
   Advert.get($stateParams)
   .$promise
   .then((temp) => {

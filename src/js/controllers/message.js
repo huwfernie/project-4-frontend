@@ -1,29 +1,20 @@
 angular
   .module('yabee')
-  .controller('messagesNewCtrl', messagesNewCtrl)
-  .controller('messagesIndexCtrl', messagesIndexCtrl);
+  .controller('messagesNewCtrl', messagesNewCtrl);
 
-messagesIndexCtrl.$inject = ['User', 'Advert', 'Offer', 'Message'];
-function messagesIndexCtrl(User, Advert, Offer, Message) {
-  const vm = this;
-  vm.users = User.query();
-  vm.adverts = Advert.query();
-  vm.offers = Offer.query();
-  vm.messages = Message.query();
-}
 
-messagesNewCtrl.$inject = ['User', 'Advert', 'Offer', 'Message', '$stateParams', 'offerService', 'advertService', '$auth', '$state'];
-function messagesNewCtrl(User, Advert, Offer, Message, $stateParams, offerService, advertService, $auth, $state) {
+messagesNewCtrl.$inject = ['User', 'Message', '$stateParams', 'offerService', 'advertService', '$auth', '$state'];
+function messagesNewCtrl(User, Message, $stateParams, offerService, advertService, $auth, $state) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.message = {
-    'subject': 'Test',
-    'body': 'test',
-    'sender_id': vm.currentUser.id,
-    'reciever_id': offerService.currentOffer.user_id,
-    'advert_id': advertService.currentAdvert.id,
-    'offer_id': offerService.currentOffer.id
+    subject: 'Test',
+    body: 'test',
+    sender_id: vm.currentUser.id,
+    reciever_id: offerService.currentOffer.user_id,
+    advert_id: advertService.currentAdvert.id,
+    offer_id: offerService.currentOffer.id
   };
 
   // get currentOffer from the offerService and set it to vm.offer
