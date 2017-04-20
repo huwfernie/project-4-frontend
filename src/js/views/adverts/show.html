@@ -18,7 +18,6 @@
     {{ offer.body }}
     <h4>Price: £{{ offer.value }}</h4>
     <image class="thumbnail" src="{{ offer.image }}"></image>
-    <!-- <a ui-sref="messagesNew({offerId :offer.id})"><button>Contact this seller</button></a> -->
     <a ng-click="advertsShow.messagesNew(offer, advertsShow.advert)"><button>Contact this seller</button></a>
   </div>
 </div>

@@ -11,9 +11,10 @@ function offersIndexCtrl(Offer) {
   vm.offers = Offer.query();
 }
 
-offersShowCtrl.$inject = ['Offer', '$stateParams'];
-function offersShowCtrl(Offer, $stateParams) {
+offersShowCtrl.$inject = ['Offer', '$stateParams', 'userService'];
+function offersShowCtrl(Offer, $stateParams, userService) {
   const vm = this;
+  vm.currentUser = userService.currentUser;
 
   vm.offer = Offer.get($stateParams);
 }

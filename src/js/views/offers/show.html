@@ -6,7 +6,8 @@
   <strong>Body </strong>{{ offersShow.offer.body }}<br>
   <strong>Price: £ </strong>{{ offersShow.offer.value }}.<br>
   <img class="thumbnail" ng-src="{{ offersShow.offer.image }}">
-  <button ui-sref="offersEdit({id: offersShow.offer.id})">Edit</button>
+  {{ offersShow.offer.user_id }} ++ {{ offersShow.currentUser.user.id }}
+  <button ui-sref="offersEdit({id: offersShow.offer.id})" ng-if="offersShow.offer.user_id === offersShow.currentUser.user.id">Edit</button>
 
 </div>
 <div class="results">
