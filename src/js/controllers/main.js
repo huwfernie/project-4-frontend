@@ -17,7 +17,7 @@ function MainCtrl(User, $rootScope, $state, $auth) {
   $rootScope.$on('$stateChangeSuccess', () => {
     // had to get rid of "!vm.currentUser && " this as it didn't change if two users sign in without refreshing the browser
     if($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
-    if(vm.stateHasChanged) vm.message = null;
+    // if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
   });
 

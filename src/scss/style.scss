@@ -115,6 +115,11 @@ header {
   margin-left: 80px;
 }
 
+// For warning messages broadcast on rootscope
+.message {
+  text-align: center;
+  background: lightsalmon;
+}
 // a:link {
 //     text-decoration: none;
 // }
