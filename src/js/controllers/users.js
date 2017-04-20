@@ -19,10 +19,6 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
   .$promise
   .then((user) => {
     vm.currentUser = user;
-    // I could do this in the back end, not sure which is better
-    vm.currentUser.messages = [];
-    vm.currentUser.messages_sent.forEach((message) => vm.currentUser.messages.push(message));
-    vm.currentUser.messages_recieved.forEach((message) => vm.currentUser.messages.push(message));
   });
 
   // this function runs when you click reply from a recieved message, it sets all the inital values for the reply
@@ -31,12 +27,12 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
     console.log('ReplyToOffer');
     vm.toggleReply = !vm.toggleReply;
     vm.reply = {
-      'subject': `re: ${message.subject}`,
-      'body': 'Your text here',
-      'sender_id': message.reciever_id,
-      'reciever_id': message.sender_id,
-      'advert_id': message.advert_id,
-      'offer_id': message.offer_id
+      subject: `re: ${message.subject}`,
+      body: 'Your text here',
+      sender_id: message.reciever_id,
+      reciever_id: message.sender_id,
+      advert_id: message.advert_id,
+      offer_id: message.offer_id
     };
   }
 
