@@ -47,6 +47,7 @@ function advertsShowCtrl(API_URL, $stateParams, Advert, $http, $state, offerServ
       vm.offers = response.data;
     });
   });
+  
   vm.messagesNew = messagesNew;
   function messagesNew(offer, advert) {
     offerService.currentOffer = offer;

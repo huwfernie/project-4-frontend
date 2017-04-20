@@ -92,6 +92,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/offers/new.html',
       controller: 'offersNewCtrl as offersNew'
     })
+    .state('offersSearch', {
+      url: '/offersSearch',
+      templateUrl: 'js/views/offers/search.html',
+      controller: 'offersSearchCtrl as offersSearch'
+    })
     // End of Offers -----------------------------------------------------
     ;
 

@@ -3,7 +3,8 @@ angular
   .controller('offersIndexCtrl', offersIndexCtrl)
   .controller('offersEditCtrl', offersEditCtrl)
   .controller('offersNewCtrl', offersNewCtrl)
-  .controller('offersShowCtrl', offersShowCtrl);
+  .controller('offersShowCtrl', offersShowCtrl)
+  .controller('offersSearchCtrl', offersSearchCtrl);
 
 offersIndexCtrl.$inject = ['Offer'];
 function offersIndexCtrl(Offer) {
@@ -71,5 +72,32 @@ function offersNewCtrl(Offer, $stateParams, $state, $auth, User) {
       });
   }
   vm.create = create;
+}
 
+offersSearchCtrl.$inject = ['Offer', '$stateParams', '$state', '$auth', 'User'];
+function offersSearchCtrl(Offer, $stateParams, $state, $auth, User) {
+  // const vm = this;
+  // if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
+  //
+  // vm.offer = {
+  //   'title': 'TEST',
+  //   'body': 'test',
+  //   'image': 'picture',
+  //   'value': 24
+  // };
+  //
+  //
+  // function create() {
+  //   User
+  //     .get({ id: $auth.getPayload().id })
+  //     .$promise
+  //     .then((user)=> {
+  //       vm.offer.user_id = user.id;
+  //       Offer
+  //         .save({ offer: vm.offer })
+  //         .$promise
+  //         .then((result) => $state.go('offersShow', { id: result.id }));
+  //     });
+  // }
+  // vm.create = create;
 }
