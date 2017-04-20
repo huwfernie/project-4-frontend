@@ -1,17 +1,26 @@
-<h1> hompeage</h1>
-would you like to
-<a ui-sref="advertsNew">Buy</a>
-or
-<a ui-sref="offersNew">Sell</a>
-?
-<a ui-sref="offersShow({id: offer.id})"  ng-repeat="offer in home.offers">
-  <div class="results">
-    <!-- {{ offer }} -->
-    <strong>Title </strong>{{ offer.title }}<br>
-    <!-- <strong>Body </strong>{{ offer.body }}<br> -->
-    <strong>Price: £ </strong>{{ offer.value }}.<br>
-    <img class="thumbnail" ng-src="{{ offer.image }}" alt="thumbnail"><br>
+<!--  -->
+<div class="searchBar">
+  <form ng-submit="home.search()">
+    <input type="text" name="search" placeholder="Search...">
+    <button>Search</button>
+  </form>
+</div>
+<div class="buyOrSell">
+  <button ui-sref="advertsNew">I'm Buying</button>
 
-    <button>More Details</button>
-  </div>
-</a>
+  <button ui-sref="offersNew">I'm Selling</button>
+</div>
+
+<div class="container">
+  <a ui-sref="offersShow({id: offer.id})"  ng-repeat="offer in home.offers">
+    <div class="homepageCard results">
+      <!-- {{ offer }} -->
+      <strong>Title </strong>{{ offer.title }}<br>
+      <!-- <strong>Body </strong>{{ offer.body }}<br> -->
+      <strong>Price: £ </strong>{{ offer.value }}.<br>
+      <img class="thumbnail" ng-src="{{ offer.image }}" alt="thumbnail"><br>
+
+      <button>More Details</button>
+    </div>
+  </a>
+</div>

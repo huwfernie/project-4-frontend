@@ -11,19 +11,26 @@
   </head>
   <body ng-controller="MainCtrl as main">
     <header>
-      <nav>
+      <nav class="development">
         <a ui-sref="home">Home</a>
         <a ui-sref="usersIndex">Users</a>
         <a ui-sref="advertsIndex">Adverts</a>
         <a ui-sref="offersIndex">Offers</a>
+      </nav>
+      <nav class="header">
+        <span ng-if="main.isAuthenticated()" class="username">hello {{ main.currentUser.username }}</span>
+        <a ui-sref="advertsIndex">All Adverts</a>
         <a ui-sref="login" ui-sref-active="active" ng-if="!main.isAuthenticated()">Login</a>
         <a ui-sref="register" ui-sref-active="active" ng-if="!main.isAuthenticated()">Register</a>
         <a ng-click="main.logout()" href="#" ng-if="main.isAuthenticated()">Logout</a>
-        <span ng-if="main.isAuthenticated()">hello {{ main.currentUser.username }}</span>
-        <a ui-sref="profile" ng-if="main.isAuthenticated()">Your homepage</a>
+
+        <a ui-sref="home">Home</a>
+        <a ui-sref="profile" ng-if="main.isAuthenticated()">Your Profile</a>
       </nav>
     </header>
     <div class="message" ng-if="main.message">{{ main.message }}</div>
-    <main ui-view></main>
+    <div class="container">
+      <main ui-view></main>
+    </div>
   </body>
 </html>
