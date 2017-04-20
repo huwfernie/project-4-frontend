@@ -5,7 +5,7 @@ angular
 offerService.$inject = [];
 function offerService() {
   const vm = this;
-  vm.currentOffer =  '' ;
+  vm.currentOffer =  {} ;
 }
 //
 // offerService.$inject = ['$window'];

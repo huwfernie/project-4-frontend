@@ -74,30 +74,17 @@ function offersNewCtrl(Offer, $stateParams, $state, $auth, User) {
   vm.create = create;
 }
 
-offersSearchCtrl.$inject = ['Offer', '$stateParams', '$state', '$auth', 'User'];
-function offersSearchCtrl(Offer, $stateParams, $state, $auth, User) {
-  // const vm = this;
-  // if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
-  //
-  // vm.offer = {
-  //   'title': 'TEST',
-  //   'body': 'test',
-  //   'image': 'picture',
-  //   'value': 24
-  // };
-  //
-  //
-  // function create() {
-  //   User
-  //     .get({ id: $auth.getPayload().id })
-  //     .$promise
-  //     .then((user)=> {
-  //       vm.offer.user_id = user.id;
-  //       Offer
-  //         .save({ offer: vm.offer })
-  //         .$promise
-  //         .then((result) => $state.go('offersShow', { id: result.id }));
-  //     });
-  // }
-  // vm.create = create;
+offersSearchCtrl.$inject = ['API_URL', '$state', '$http', 'offerService'];
+function offersSearchCtrl(API_URL, $state, $http, offerService) {
+  const vm = this;
+
+  $http({
+    url: `${API_URL}/offers/search`,
+    method: 'GET',
+    params: {search: offerService.query, valueMin: 0, valueMax: 1000000}
+  })
+  .then((response) => {
+    offerService.query = '';
+    vm.offers = response.data;
+  });
 }
