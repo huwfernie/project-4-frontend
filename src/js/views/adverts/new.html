@@ -1,17 +1,21 @@
-<h1>advertsnew</h1>
+<h1>adverts New</h1>
 
 <form ng-submit="advertsNew.create()">
-  <label for="title">Title</label>
-  <input type="text" id="title" name="title" ng-model="advertsNew.advert.title">
+  <p>
+    <label for="title">Title</label>
+    <input type="text" id="name" name="name" ng-model="advertsNew.advert.title" placeholder="Describe what you're looking for...">
+  </p>
+  <p>
+    <label for="body">body</label>
+    <textarea rows="4" cols="90" name="comment" ng-model="advertsNew.advert.body" placeholder="Describe what you want to buy..."></textarea>
+  </p>
+  <p>
+    <label for="valueMin">Price range £ :</label>
+    <input type="number" id="valueMin" name="valueMin" ng-model="advertsNew.advert.valueMin" placeholder="0.00">
 
-  <label for="body">Body</label>
-  <textarea rows="4" cols="90" name="comment" ng-model="advertsNew.advert.body">.</textarea>
-
-  <label for="valueMax">valueMax</label>
-  <input type="number" id="valueMax" name="valueMax" ng-model="advertsNew.advert.valueMax">
-
-  <label for="valueMin">valueMin</label>
-  <input type="number" id="valueMin" name="valueMin" ng-model="advertsNew.advert.valueMin">
+    <label for="valueMax">to</label>
+    <input type="number" id="valueMax" name="valueMax" ng-model="advertsNew.advert.valueMax" placeholder="1,000,000">
+  </p>
 
   <button>Create</button>
 </form>
