@@ -8,5 +8,4 @@ homeCtrl.$inject = ['Offer'];
 function homeCtrl(Offer) {
   const vm = this;
   vm.offers = Offer.query();
-
 }

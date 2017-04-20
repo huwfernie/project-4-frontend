@@ -12,10 +12,15 @@ function offersIndexCtrl(Offer) {
   vm.offers = Offer.query();
 }
 
-offersShowCtrl.$inject = ['Offer', '$stateParams', 'userService'];
-function offersShowCtrl(Offer, $stateParams, userService) {
+offersShowCtrl.$inject = ['Offer', '$stateParams', 'userService', 'User', '$auth'];
+function offersShowCtrl(Offer, $stateParams, userService, User, $auth) {
   const vm = this;
-  vm.currentUser = userService.currentUser;
+
+  if (!userService.currentUser.id) {
+    if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
+  } else {
+    vm.currentUser = userService.currentUser;
+  }
 
   vm.offer = Offer.get($stateParams);
 }
@@ -88,7 +93,6 @@ function offersSearchCtrl(API_URL, $state, $http, $stateParams) {
     }
   })
   .then((response) => {
-    console.log(response);
     vm.offers = response.data;
   });
 }

@@ -6,8 +6,8 @@
   <strong>Body </strong>{{ advertsShow.advert.body }}<br>
   <strong>Price range: £ </strong>{{ advertsShow.advert.valueMin }} -to- {{ advertsShow.advert.valueMax }}.
   <!-- {{ advertsShow.advert }} -->
-  <!-- {{ advertsShow.advert.user_id}} ++ {{ advertsShow.currentUser.user.id }} -->
-  <button ui-sref="advertsEdit({id: advertsShow.advert.id})" ng-if="advertsShow.advert.user_id === advertsShow.currentUser.user.id">Edit</button>
+  {{ advertsShow.advert.user_id}} ++ {{ advertsShow.currentUser.id }}
+  <button ui-sref="advertsEdit({id: advertsShow.advert.id})" ng-if="advertsShow.advert.user_id === advertsShow.currentUser.id">Edit</button>
     <!-- <button ng-click="advert.delete()">Delete</button> -->
 </div>
 <div class="results">

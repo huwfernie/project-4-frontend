@@ -29,8 +29,6 @@ function MainCtrl(User, $rootScope, $state, $auth) {
 
 
   function search() {
-    console.log('search');
-    console.log(vm.query);
     vm.query;
 
     $state.go('offersSearch', { query: vm.query }); // Mike Fixed this!

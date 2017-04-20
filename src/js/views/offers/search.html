@@ -1,14 +1,18 @@
-<h1>offers Search</h1>
 
-
-<div class="results">
+<div class="container">
+  <p>
   <h1>Matching Results</h1>
   Filter by price -- Filter by distance
-  <div class="outline" ng-repeat="offer in offersSearch.offers">
-    <h3>{{ offer.title }}</h3>
-    {{ offer.body }}
-    <h4>Price: £{{ offer.value }}</h4>
-    <image class="thumbnail" src="{{ offer.image }}"></image>
-    <a ng-click="advertsShow.messagesNew(offer, advertsShow.advert)"><button>Contact this seller</button></a>
-  </div>
+  </p>
+  <a ui-sref="offersShow({id: offer.id})"  ng-repeat="offer in offersSearch.offers">
+    <div class="homepageCard results">
+      <!-- {{ offer }} -->
+      <strong>Title </strong>{{ offer.title }}<br>
+      <!-- <strong>Body </strong>{{ offer.body }}<br> -->
+      <strong>Price: £ </strong>{{ offer.value }}.<br>
+      <img class="thumbnail" ng-src="{{ offer.image }}" alt="thumbnail"><br>
+
+      <button>More Details</button>
+    </div>
+  </a>
 </div>

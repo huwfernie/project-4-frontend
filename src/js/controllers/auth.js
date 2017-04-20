@@ -16,8 +16,10 @@ function authCtrl($auth, $state, userService) {
 
   function login() {
     $auth.login(vm.credentials)
-      .then((user) => {
-        userService.currentUser = user.data;
+      .then((response) => {
+        userService.currentUser = response.data.user;
+        console.log('auth');
+        console.log(response.data);
         $state.go('profile');
       });
   }
