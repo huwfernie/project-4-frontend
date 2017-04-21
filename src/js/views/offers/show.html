@@ -4,7 +4,7 @@
   <h1>Your Offer</h1>
   <!-- {{ offersShow.offer }}<br> -->
   <strong>Title </strong>{{ offersShow.offer.title }}<br>
-  <strong>Body </strong>{{ offersShow.offer.body }}<br>
+  <strong>Body </strong><div ng-bind-html="offersShow.offer.html_body"></div><br>
   <strong>Price: £ </strong>{{ offersShow.offer.value }}.<br>
   <img class="thumbnail" ng-src="{{ offersShow.offer.image_src }}">
   <!-- {{ offersShow.offer.user_id }} ++ {{ offersShow.currentUser.id }} or {{ offersShow.currentUser.id }} -->
