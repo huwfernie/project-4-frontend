@@ -59,7 +59,6 @@ function offersNewCtrl(Offer, $stateParams, $state, $auth, User) {
   vm.offer = {
     'title': 'TEST',
     'body': 'test',
-    // 'image': 'picture',
     'value': 24
   };
 

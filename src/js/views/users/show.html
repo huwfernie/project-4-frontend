@@ -57,7 +57,7 @@
     <p>{{ offer.body }}</p>
     <strong>id:</strong>{{ offer.id }}<br>
     <p>Price: £ {{ offer.value }}.</p>
-    <img class="thumbnail" ng-src="{{ offer.image }}" alt="Listing Image" />
+    <img class="thumbnail" ng-src="{{ offer.image_src }}" alt="Listing Image" />
     <button ui-sref="offersShow({id: offer.id})">View Details</button>
     <!-- Messages section -->
     <div class="results">
