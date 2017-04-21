@@ -18,9 +18,10 @@ function homeCtrl(Offer, userService, $state, $rootScope) {
       console.log('broadcast');
       const err = new Error('unauthorized');
       err.status = 401;
-      err.data = { message: 'you are unauthorized' };
-      return $rootScope.$broadcast('error', err);
+      err.data = { message: 'you must login if you want to write your own advert' };
+      $rootScope.$broadcast('error', err);
+      $state.go('login');
     }
-
   }
+
 }

@@ -9,19 +9,34 @@ function MainCtrl(User, $rootScope, $state, $auth) {
 
 
   vm.isAuthenticated = $auth.isAuthenticated;
+  vm.stateHasChanged = false;//??
 
   $rootScope.$on('error', (e, err) => {
     vm.message = err.data.message;
     if(err.status === 401) $state.go('login');
   });
+
   $rootScope.$on('$stateChangeSuccess', () => {
     // had to get rid of "!vm.currentUser && " this as it didn't change if two users sign in without refreshing the browser
-    if($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
-    // if(vm.stateHasChanged) vm.message = null;
+    if(!vm.currentUser && $auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
+    //if(vm.stateHasChanged) vm.message = null; this needs work --------------------------------------------------------
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
   });
 
+
+  const protectedStates = ['offersNew'];
+
+  $rootScope.$on('$stateChangeStart', (e, toState) => {
+    if((!$auth.isAuthenticated() && protectedStates.includes(toState.name))) {
+      console.log('protectedState');
+      e.preventDefault();
+      $state.go('login');
+      vm.message = 'You must be logged in to access this page.';
+    }
+  });
+
   function logout() {
+    vm.currentUser = null;
     $auth.logout();
     $state.go('login');
   }
@@ -29,7 +44,7 @@ function MainCtrl(User, $rootScope, $state, $auth) {
 
 
   function search() {
-    vm.query;
+    // vm.query;
 
     $state.go('offersSearch', { query: vm.query }); // Mike Fixed this!
   }

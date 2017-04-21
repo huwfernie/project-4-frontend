@@ -18,8 +18,8 @@ function authCtrl($auth, $state, userService) {
     $auth.login(vm.credentials)
       .then((response) => {
         userService.currentUser = response.data.user;
-        console.log('auth');
-        console.log(response.data);
+        // console.log('auth');
+        // console.log(response.data);
         $state.go('profile');
       });
   }
