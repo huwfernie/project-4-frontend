@@ -4,12 +4,16 @@
   <!-- <h1>Your Offer</h1> -->
   <!-- {{ offersShow.offer }}<br> -->
   <h3>{{ offersShow.offer.title }}</h3>
+  <span class="price"><strong>Price: £ </strong>{{ offersShow.offer.value }}.</span><br>
   <img class="showImage" ng-src="{{ offersShow.offer.image_src }}">
+  <div style="{{ offersShow.offer.image_src }}" ></div>
+  <p>
+    <div ng-style="{'background-image':'url({{  offersShow.offer.image_src }})'}">here</div>
+  </p>
   <div class="description">
     <h3>Description</h3>
     <hr>
     <div ng-bind-html="offersShow.offer.html_body"></div><br>
-    <strong>Price: £ </strong>{{ offersShow.offer.value }}.<br>
   </div>
 
   <!-- {{ offersShow.offer.user_id }} ++ {{ offersShow.currentUser.id }} or {{ offersShow.currentUser.id }} -->
