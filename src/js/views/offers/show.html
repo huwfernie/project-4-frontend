@@ -1,16 +1,17 @@
-<h1>offers show</h1>
+<h1></h1>
 
 <div class="outline">
   <h1>Your Offer</h1>
+  <!-- {{ offersShow.offer }}<br> -->
   <strong>Title </strong>{{ offersShow.offer.title }}<br>
   <strong>Body </strong>{{ offersShow.offer.body }}<br>
   <strong>Price: £ </strong>{{ offersShow.offer.value }}.<br>
-  <img class="thumbnail" ng-src="{{ offersShow.offer.image }}">
-  {{ offersShow.offer.user_id }} ++ {{ offersShow.currentUser.id }} or {{ offersShow.currentUser.id }}
+  <img class="thumbnail" ng-src="{{ offersShow.offer.image_src }}">
+  <!-- {{ offersShow.offer.user_id }} ++ {{ offersShow.currentUser.id }} or {{ offersShow.currentUser.id }} -->
   <button ui-sref="offersEdit({id: offersShow.offer.id})" ng-if="offersShow.offer.user_id === offersShow.currentUser.id">Edit</button>
 
 </div>
-<div class="results">
+<!-- <div class="results">
   <h1>Matching Results</h1>
   Filter by price -- Filter by distance
   <div class="outline" ng-repeat="offer in offersShow.offers">
@@ -18,7 +19,6 @@
     {{ offer.body }}
     <h4>Price: £{{ offer.value }}</h4>
     <image class="thumbnail" src="{{ offer.image }}"></image>
-    <!-- <a ui-sref="messagesNew({offerId :offer.id})"><button>Contact this seller</button></a> -->
     <a ng-click="offersShow.messagesNew(offer)"><button>Contact this seller</button></a>
   </div>
-</div>
+</div> -->
