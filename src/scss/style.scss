@@ -7,6 +7,7 @@ $bodyBackground: #f1f1f1;
 $offerText: #635b67;
 $offerTitle: #3997ba;
 $white: #ffffff;
+$oAuthButton: #b1adb3;
 
 
 body {
@@ -81,18 +82,11 @@ header {
   }
 }
 
-// basic button class
-.button {
-  border: 0;
-  padding: 5px 10px;
-  border-radius: 5px;
-  background: inherit;
-}
-
 // this is the section on the homepage with the big buy or sell?? divs
 .buyOrSell {
   button {
-    @extend .button;
+    background: inherit;
+
     font-size: 65px;
     font-style: italic;
     border-radius: 15px;
@@ -107,37 +101,7 @@ header {
   text-align: center;
 }
 
-// generic, used in everything!!
-.outline {
-  margin-top: 30px;
-  border: 2px solid blue;
-  border-radius: 30px;
-  padding: 5px 15px;
-  overflow: hidden;
-}
-
-// used in the results to a new advert page
-.results {
-  @extend .outline;
-  .outline {
-    text-align: left;
-    .thumbnail {
-      height: 150px;
-    }
-  }
-}
-
-// .container {
-//   box-sizing: content-box;
-//   border: 0px solid black;
-//   text-align: justify;
-//
-//   button {
-//     cursor: pointer;
-//   }
-// }
-
-// used for the contaner for the massonry type thing
+// used for the contaner for the massonry type thing on the homepage
 .homepageContainer {
   column-count: 3;
   column-gap: 1em;
@@ -172,14 +136,65 @@ header {
     }
   }
   &:hover {
-    box-shadow: 0 2px 6px 2px #d8d6d9;
+    box-shadow: 0 2px 6px 2px $searchbar;
   }
 }
 
-// not sure
-.outline {
-  .thumbnail {
-    height: 150px;
+// **************************
+// Login page
+// **************************
+
+
+.loginContainer {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 380px;
+  background: $white;
+  border: 1px solid $searchbar;
+  padding: 24px;
+  form {
+    margin: 0 auto;
+    // padding-left: 22px;
+    width: 335px;
+  }
+  .loginFormButton {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 16px;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    margin: 8px auto;
+    color: $white;
+    background: $searchButton;
+    transition: background 0.5s ease;
+
+    &:hover {
+      background: #733a3a;
+    }
+  }
+  .loginFormInput {
+    box-sizing: border-box;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    margin: 8px 0;
+    padding: 0;
+  }
+  .oAuthButton {
+    width: 333px;
+    height: 35px;
+    line-height: 35px;
+    margin: 8px auto;
+
+    border: 1px solid $oAuthButton;
+    text-align: center;
+    color: red;
+    &:hover {
+      color: white;
+      background: black;
+    }
   }
 }
 
@@ -200,7 +215,57 @@ header {
   background: lightsalmon;
 }
 
+// for the mid-height line used in the login form at "Or"
+.midline {
+  width: 70%;
+  margin: .7em auto;
+  overflow: hidden;
+  text-align: center;
+  font-weight:300;
+  color: $oAuthButton;
+}
+.midline:before, .midline:after {
+  content: "";
+  display: inline-block;
+  width: 50%;
+  margin: 0 .5em 0 -55%;
+  vertical-align: middle;
+  border-bottom: 1px solid;
+}
+.midline:after {
+  margin: 0 -55% 0 .5em;
+}
+
 // not sure
 .showImage {
   width: 100%;
+}
+
+// generic, used in everything!!
+.outline {
+  margin-top: 30px;
+  border: 2px solid blue;
+  border-radius: 30px;
+  padding: 5px 15px;
+  overflow: hidden;
+}
+
+// used in the results to a new advert page
+.results {
+  @extend .outline;
+  .outline {
+    text-align: left;
+    .thumbnail {
+      height: 150px;
+    }
+  }
+}
+
+
+
+// not sure
+.outline {
+  .thumbnail {
+    height: 150px;
+  }
 }

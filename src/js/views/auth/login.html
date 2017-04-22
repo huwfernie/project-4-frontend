@@ -1,28 +1,43 @@
-<form ng-submit="auth.login()">
-  <div>
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email" ng-model="auth.credentials.email">
+<!--  -->
+
+<div class="loginContainer">
+  <div class="oAuthButton">
+    Sign in with Google
   </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" ng-model="auth.credentials.password">
-  </div>
+  <div class="midline">Or</div>
+  <form ng-submit="auth.login()">
+    <div>
+      <label for="email">Email</label>
+      <input class="loginFormInput" type="text" name="email" id="email" ng-model="auth.credentials.email">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input class="loginFormInput" type="password" name="password" id="password" ng-model="auth.credentials.password">
+    </div>
 
-  <button>Login</button>
-</form>
+    <button class="loginFormButton" >Login</button>
+  </form>
+</div>
 
-username: "emily"<br>
-email: "e@e"<br>
-password: "p"<br>
-
-username: "ajay"<br>
-email: "a@a"<br>
-password: "p"<br>
-
-username: "mike"<br>
-email: "m@m"<br>
-password: "p"<br>
-
-username: "will"<br>
-email: "w@w"<br>
-password: "p"
+<div class="temp">
+  <p>
+    username: "emily"<br>
+    email: "e@e"<br>
+    password: "p"<br>
+  </p>
+  <p>
+    username: "ajay"<br>
+    email: "a@a"<br>
+    password: "p"<br>
+  </p>
+  <p>
+    username: "mike"<br>
+    email: "m@m"<br>
+    password: "p"<br>
+  </p>
+  <p>
+    username: "will"<br>
+    email: "w@w"<br>
+    password: "p"
+  </p>
+</div>
