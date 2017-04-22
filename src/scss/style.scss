@@ -8,6 +8,8 @@ $offerText: #635b67;
 $offerTitle: #3997ba;
 $white: #ffffff;
 $oAuthButton: #b1adb3;
+$tabBackground: #f1f1f1;
+$listShowBorder: #d8d6d9;
 
 
 body {
@@ -141,7 +143,7 @@ header {
 }
 
 // **************************
-// Login page
+// Login and register page
 // **************************
 
 
@@ -198,6 +200,71 @@ header {
   }
 }
 
+// **************************
+// usersShow page
+// **************************
+
+.listShowContainer {
+  width: 800px;
+  margin: 30px auto;
+  background: $white;
+  box-sizing: border-box;
+  border: 1px solid $listShowBorder;
+  border-bottom: 0;
+
+  // tab container for the menu tabs at the top of the list
+  .tabContainer {
+    width: 100%;
+    background: $tabBackground;
+    .tab {
+      width: 20%;
+      height: 40px;
+      line-height: 40px;
+      float: left;
+      font-size: 15px;
+      text-align: center;
+
+      display: inline-block;
+      box-sizing: border-box;
+      border: 1px solid $listShowBorder;
+    }
+    .active {
+      background: $white;
+      border: 0;
+    }
+  }
+  .listTitle {
+    padding: 20px 10px;
+  }
+  .listShowlisting {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0px 0;;
+    padding: 20px 5px;
+    border-bottom: 1px solid $listShowBorder;
+    cursor: pointer;
+    .image {
+      height: 90px;
+      width: 120px;
+      background: $white;
+      float: left;
+      border: 1px solid $listShowBorder;
+    }
+    .content {
+      max-width: 630px;
+      padding-left: 20px;
+      float: left;
+
+    }
+  }
+}
+
+// **************************
+// itemShow page
+// **************************
+
+
+
 
 // for messages that appear on the users profile page
 .messages_sent {
@@ -236,6 +303,16 @@ header {
   margin: 0 -55% 0 .5em;
 }
 
+//used in all individual ads (homepage)(showpage)
+.title {
+  display: block;
+  color: $offerTitle;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+
+
 // not sure
 .showImage {
   width: 100%;
@@ -268,4 +345,11 @@ header {
   .thumbnail {
     height: 150px;
   }
+}
+
+// clearfix
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }

@@ -13,6 +13,7 @@ usersShowCtrl.$inject = ['User', '$auth', '$http', '$stateParams', 'offerService
 function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertService, $state, Message) {
   const vm = this;
   vm.toggleReply = false;
+  vm.tab = 1;
 
   function getCurrentUser() {
     User
@@ -28,6 +29,11 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
   // .then((user) => {
   //   vm.currentUser = user;
   // });
+
+  vm.setTab = setTab;
+  function setTab(x){
+    vm.tab = x;
+  }
 
   // this function runs when you click reply from a recieved message, it sets all the inital values for the reply
   vm.setupReply = setupReply;

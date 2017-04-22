@@ -1,91 +1,132 @@
-<h1>users Show</h1>
+<!-- <h1>users Show</h1> -->
 
-<div class="results">
+<!-- <div class="results">
   <strong>Your Account</strong>
   <div class="outline">
     <strong>Username: </strong>{{ usersShow.currentUser.username }}<br>
     <strong>Email: </strong>{{ usersShow.currentUser.email }}<br>
     <strong>My user id: </strong>{{ usersShow.currentUser.id }}<br>
   </div>
-</div>
+</div> -->
 
-<div class="results">
-  <strong>adverts - What I want to buy</strong>
-  <div class="outline" ng-repeat="advert in usersShow.currentUser.adverts">
-    <strong>Title: </strong>{{ advert.title }}<br>
-    <strong>Body: </strong>{{ advert.body }}<br>
-    <strong>id: </strong>{{ advert.id }}<br>
-    <strong>Price range: </strong>£{{ advert.valueMin }} to  £{{ advert.valueMax }}.<br>
-    <button ui-sref="advertsShow({id: advert.id})">View Details</button>
-    <!-- Messages Section -->
-    <div class="results">
-      <strong>messages joined</strong> (red is what I send)
-      <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="advert.id == message.advert_id">
-        <strong>Subject: </strong>{{ message.subject }}<br>
-        <strong>Body: </strong>{{ message.body }}<br>
-        <strong>Created at: </strong>{{ message.created_at }}<br>
-        <strong>Sender id: </strong>{{ message.sender_id }}<br>
-        <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
-        <strong>advert_id: </strong>{{ message.advert_id }}<br>
-        <strong>offer_id: </strong>{{ message.offer_id }}<br>
-        <button ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.setupReply(message)">Reply</button>
-      </div>
-    </div>
-    <!-- Messages Section -->
-    <!-- Reply to Messages section -->
-    <div class="results" ng-show="usersShow.toggleReply">
-      <strong>messages reply</strong>
-      <form ng-submit="usersShow.replyToMessage()" id="messageForm">
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" ng-model="usersShow.reply.subject">
-
-        <textarea rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageForm">Enter text here...</textarea>
-        <button>Send</button>
-        <button ng-click="usersShow.clearReply()">Discard</button>
-      </form>
-      {{ usersShow.reply }}
-    </div>
-    <!-- Reply to Messages section -->
+<div class="listShowContainer ">
+  <div class="tabContainer clearfix">
+    <span class="tab active" ng-class="{active:usersShow.tab == 1}" ng-click="usersShow.setTab(1)">What I'm looking for</span>
+    <span class="tab" ng-class="{active:usersShow.tab == 2}" ng-click="usersShow.setTab(2)">My itmes for sale</span>
+    <span class="tab" ng-click="usersShow.setTab(3)">My Details</span>
+    <span class="tab" ng-click="usersShow.setTab(4)"></span>
+    <span class="tab" ng-click="usersShow.setTab(5)"></span>
   </div>
-</div>
+  <p></p>
+  <!-- End of menu bar -->
 
-<div class="results">
-  <strong>offers - Things I'm selling</strong>
-  <div class="outline" ng-repeat="offer in usersShow.currentUser.offers">
-    <!-- {{ offer }} -->
-    <h3>{{ offer.title }}</h3>
-    <p>{{ offer.body }}</p>
-    <strong>id:</strong>{{ offer.id }}<br>
-    <p>Price: £ {{ offer.value }}.</p>
-    <img class="thumbnail" ng-src="{{ offer.image_src }}" alt="Listing Image" />
-    <button ui-sref="offersShow({id: offer.id})">View Details</button>
-    <!-- Messages section -->
-    <div class="results">
-      <strong>messages joined</strong> (red is what I send)
-      <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="offer.id == message.offer_id">
-        <strong>Subject: </strong>{{ message.subject }}<br>
-        <strong>Body: </strong>{{ message.body }}<br>
-        <strong>Created at: </strong>{{ message.created_at }}<br>
-        <strong>Sender id: </strong>{{ message.sender_id }}<br>
-        <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
-        <strong>advert_id: </strong>{{ message.advert_id }}<br>
-        <strong>offer_id: </strong>{{ message.offer_id }}<br>
-        <a ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.setupReply(message)"><button>Reply</button></a>
+  <!-- Tab One -->
+  <div  ng-if="usersShow.tab == 1">
+    <span class="listTitle">What I want to buy - You currently have {{ usersShow.currentUser.adverts.length }} adverts</span>
+    <div class="listShowlisting" ng-repeat="advert in usersShow.currentUser.adverts" ui-sref="advertsShow({id: advert.id})">
+
+      <div class="clearfix">
+        <div class="image">
+          <img ng-src="#">
+        </div>
+        <div class="content">
+          <div class="title">{{ advert.title }}</div>
+          <span>{{ advert.body | limitTo: 200 }}<span ng-if="advert.body.length > 200">...</span></span><br>
+          <strong>id: </strong>{{ advert.id }}<br>
+          <strong>Price range: </strong>£{{ advert.valueMin }} to  £{{ advert.valueMax }}.<br>
+        </div>
       </div>
-    </div>
-    <!-- Messages section -->
-    <!-- Reply to Messages section -->
-    <div class="results" ng-show="usersShow.toggleReply">
-      <strong>messages reply</strong>
-      <form ng-submit="usersShow.replyToMessage()" id="messageFormOffers">
-        <label for="subjectOffers">Subject</label>
-        <input type="text" id="subjectOffers" name="subject" ng-model="usersShow.reply.subject">
 
-        <textarea rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageFormOffers">Enter text here...</textarea>
-        <button>Send</button>
-      </form>
-      {{ usersShow.reply }}
+      <!-- Messages Section -->
+      <p></p>
+      <div class="results">
+        <strong>messages</strong> (red is what I send)
+        <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="advert.id == message.advert_id">
+          <strong>Subject: </strong>{{ message.subject }}<br>
+          <strong>Body: </strong>{{ message.body }}<br>
+          <strong>Created at: </strong>{{ message.created_at }}<br>
+          <strong>Sender id: </strong>{{ message.sender_id }}<br>
+          <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
+          <strong>advert_id: </strong>{{ message.advert_id }}<br>
+          <strong>offer_id: </strong>{{ message.offer_id }}<br>
+          <button ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.setupReply(message)">Reply</button>
+        </div>
+      </div>
+      <!-- Messages Section -->
+      <!-- Reply to Messages section -->
+      <div class="results" ng-show="usersShow.toggleReply">
+        <strong>messages reply</strong>
+        <form ng-submit="usersShow.replyToMessage()" id="messageForm">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" ng-model="usersShow.reply.subject">
+
+          <textarea rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageForm">Enter text here...</textarea>
+          <button>Send</button>
+          <button ng-click="usersShow.clearReply()">Discard</button>
+        </form>
+        {{ usersShow.reply }}
+      </div>
+      <!-- Reply to Messages section -->
     </div>
-    <!-- Reply to Messages section -->
+  </div>
+
+
+<!--
+  <div >
+       <h4>Tab 1</h4>
+  </div>
+  <div >
+       <h4>Tab 2</h4>
+  </div>
+  <div ng-show="tab.isSet(3)">
+       <h4>Tab 3</h4>
+  </div> -->
+
+  <!-- Tab Two -->
+  <div  ng-if="usersShow.tab == 2">
+    <span class="listTitle">offers - You currently have {{ usersShow.currentUser.offers.length }} itmes for sale</span>
+    <div class="listShowlisting" ng-repeat="offer in usersShow.currentUser.offers" ui-sref="offersShow({id: offer.id})">
+
+      <div class="clearfix">
+        <div class="image">
+          <img class="image" ng-src="{{ offer.image_src }}" alt="Listing Image" >
+        </div>
+        <div class="content">
+          <div class="title">{{ offer.title }}</div>
+          <span>{{ offer.body | limitTo: 200 }}<span ng-if="offer.body.length > 200">...</span></span><br>
+          <!-- id: {{ offer.id }}<br> -->
+          <p>£{{ offer.value }}.</p>
+        </div>
+      </div>
+
+      <!-- Messages section -->
+      <div class="results">
+        <strong>messages joined</strong> (red is what I send)
+        <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="offer.id == message.offer_id">
+          <strong>Subject: </strong>{{ message.subject }}<br>
+          <strong>Body: </strong>{{ message.body }}<br>
+          <strong>Created at: </strong>{{ message.created_at }}<br>
+          <strong>Sender id: </strong>{{ message.sender_id }}<br>
+          <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
+          <strong>advert_id: </strong>{{ message.advert_id }}<br>
+          <strong>offer_id: </strong>{{ message.offer_id }}<br>
+          <a ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.setupReply(message)"><button>Reply</button></a>
+        </div>
+      </div>
+      <!-- Messages section -->
+      <!-- Reply to Messages section -->
+      <div class="results" ng-show="usersShow.toggleReply">
+        <strong>messages reply</strong>
+        <form ng-submit="usersShow.replyToMessage()" id="messageFormOffers">
+          <label for="subjectOffers">Subject</label>
+          <input type="text" id="subjectOffers" name="subject" ng-model="usersShow.reply.subject">
+
+          <textarea rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageFormOffers">Enter text here...</textarea>
+          <button>Send</button>
+        </form>
+        {{ usersShow.reply }}
+      </div>
+      <!-- Reply to Messages section -->
+    </div>
   </div>
 </div>
