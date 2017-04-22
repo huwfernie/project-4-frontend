@@ -151,10 +151,9 @@ header {
   width: 380px;
   background: $white;
   border: 1px solid $searchbar;
-  padding: 24px;
+  padding: 24px 0;
   form {
     margin: 0 auto;
-    // padding-left: 22px;
     width: 335px;
   }
   .loginFormButton {
@@ -180,7 +179,8 @@ header {
     height: 35px;
     line-height: 35px;
     margin: 8px 0;
-    padding: 0;
+    padding: 0 0 0 10px;
+    font-size: 16px;
   }
   .oAuthButton {
     width: 333px;
