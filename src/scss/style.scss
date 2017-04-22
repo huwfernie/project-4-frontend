@@ -1,31 +1,87 @@
 // Import all of your scss files here
+$navbar: #3c3241;
+$navtext: #e1dcd8;
+$searchbar: #d8d6d9;
+$searchButton: #e57373;
+$bodyBackground: #f1f1f1;
+$offerText: #635b67;
+$offerTitle: #3997ba;
+$white: #ffffff;
+
 
 body {
   // width: 80vw;
   margin: 0 auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  background: $bodyBackground;
 }
 
 header {
   .development {
     background: red;
+    display: none;
   }
   .header {
-    background: yellow;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    border-bottom: 3px solid grey;
+    background: $navbar;
+    color: $navtext;
+    height: 55px;
+    line-height: 54px;
+    border-bottom: 1px solid grey;
     letter-spacing: 1px;
     text-align: right;
     padding-right: 45px;
     a {
       margin: 0 10px;
+      color: $navtext;
+      text-decoration: none;
     }
     .username {
       text-transform: capitalize;
     }
+    .navLogo {
+      float: left;
+      margin-left: 8px;
+      margin-top: 10px;
+      height: 35px;
+      width: 135px;
+      background-image: url('https://www.gumtree.com/static/1/resources/assets/rwd/images/svg/primary_logo.svg?v=a8e305637f');
+      background-size: cover;
+    }
   }
 }
 
+// search bar on all page
+.searchBar {
+  padding: 20px 0;
+  display: inline-block;
+  width: 100%;
+  text-align: center; // to center the whole search bar
+  font-size: 16px;
+  background: $searchbar;
+  input {
+      border-radius: 2px;
+      border: 1px solid $searchbar;
+      height: 35px;
+      line-height: 20px;
+    width: 40%;
+    padding: 0px 8px;
+    font-size: 16px;
+    border-radius: 3px;
+  }
+  button {
+    height: 35px;
+    line-height: 14px;
+    font-size: 16px;
+    padding: 0 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: $white;
+    background: $searchButton;
+    border: $searchButton;
+  }
+}
+
+// basic button class
 .button {
   border: 0;
   padding: 5px 10px;
@@ -33,24 +89,7 @@ header {
   background: inherit;
 }
 
-.searchBar {
-  padding: 20px 0;
-  text-align: center;
-  font-size: 16px;
-  input {
-    width: 40%;
-    padding: 10px 15px;
-    border-radius: 3px;
-  }
-  button {
-    padding: 10px 15px;
-    border-radius: 3px;
-    color: white;
-    background: lightblue;
-    border: lightblue;
-  }
-}
-
+// this is the section on the homepage with the big buy or sell?? divs
 .buyOrSell {
   button {
     @extend .button;
@@ -66,9 +105,9 @@ header {
   }
   margin: 60px 0 30px 0;
   text-align: center;
-
 }
 
+// generic, used in everything!!
 .outline {
   margin-top: 30px;
   border: 2px solid blue;
@@ -77,6 +116,7 @@ header {
   overflow: hidden;
 }
 
+// used in the results to a new advert page
 .results {
   @extend .outline;
   .outline {
@@ -87,29 +127,68 @@ header {
   }
 }
 
-.container {
-  box-sizing: content-box;
-  border: 0px solid black;
-  text-align: justify;
+// .container {
+//   box-sizing: content-box;
+//   border: 0px solid black;
+//   text-align: justify;
+//
+//   button {
+//     cursor: pointer;
+//   }
+// }
+
+// used for the contaner for the massonry type thing
+.homepageContainer {
+  column-count: 3;
+  column-gap: 1em;
   padding: 0 30px;
 }
 
+// each card as used on homepage within the container
 .homepageCard {
   display: inline-block;
-  margin: 5px auto;
+  margin: 0 0 1em;
+  width: 100%;
+
+  box-sizing: border-box;
+  border: 0px solid black;
+  background: $white;
+  .thumbnail {
+    // height: 150px;
+    width: 100%;
+  }
+  .content {
+    padding: 10px 15px;
+    .title {
+      display: block;
+      color: $offerTitle;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .price {
+      color: $offerText;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  &:hover {
+    box-shadow: 0 2px 6px 2px #d8d6d9;
+  }
 }
+
+// not sure
 .outline {
   .thumbnail {
     height: 150px;
   }
 }
 
+
+// for messages that appear on the users profile page
 .messages_sent {
   border-color: red;
   margin-right: 80px;
-
 }
-
 .messages_recieved {
   border-color: green;
   margin-left: 80px;
@@ -120,25 +199,8 @@ header {
   text-align: center;
   background: lightsalmon;
 }
-// a:link {
-//     text-decoration: none;
-// }
-//
-// a:visited {
-//     text-decoration: none;
-// }
-//
-// a:hover {
-//     text-decoration: underline;
-// }
-//
-// a:active {
-//     text-decoration: underline;
-// }
-.price {
-  float: right;
-}
 
+// not sure
 .showImage {
   width: 100%;
 }

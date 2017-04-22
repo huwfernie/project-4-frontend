@@ -6,16 +6,17 @@
   <!-- <button ng-click="home.offersNew()">I'm Selling</button> -->
 </div>
 
-<div class="container">
-  <a ui-sref="offersShow({id: offer.id})"  ng-repeat="offer in home.offers">
-    <div class="homepageCard results">
+<!-- the contanier DIV is needed to keep all the cards in order -->
+<div class="homepageContainer">
+  <a class="a" ui-sref="offersShow({id: offer.id})"  ng-repeat="offer in home.offers">
+    <div class="homepageCard">
       <!-- {{ offer }} -->
-      <strong>Title </strong>{{ offer.title }}<br>
-      <!-- <strong>Body </strong>{{ offer.body }}<br> -->
-      <strong>Price: £ </strong>{{ offer.value }}.<br>
       <img class="thumbnail" ng-src="{{ offer.image_src }}" alt="thumbnail"><br>
 
-      <button>More Details</button>
+      <div class="content">
+        <span class="title">{{ offer.title | limitTo: 25 }}<span ng-if="offer.title.length > 25">...</span></span>
+        <span class="price"> £ {{ offer.value }}</span>
+      </div>
     </div>
   </a>
 </div>

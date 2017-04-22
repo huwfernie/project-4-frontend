@@ -8,7 +8,7 @@
     <!-- endinject -->
     <!-- inject:css -->
     <!-- endinject -->
-  </head>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">  </head>
   <body ng-controller="MainCtrl as main">
     <header>
       <nav class="development">
@@ -18,8 +18,9 @@
         <a ui-sref="offersIndex">Offers</a>
       </nav>
       <nav class="header">
+        <span class="navLogo"></span>
         <span ng-if="main.isAuthenticated()" class="username">hello {{ main.currentUser.username }}</span>
-        <a ui-sref="advertsIndex">All Adverts</a>
+
         <a ui-sref="login" ui-sref-active="active" ng-if="!main.isAuthenticated()">Login</a>
         <a ui-sref="register" ui-sref-active="active" ng-if="!main.isAuthenticated()">Register</a>
         <a ng-click="main.logout()" href="#" ng-if="main.isAuthenticated()">Logout</a>
@@ -31,7 +32,7 @@
     <div class="searchBar">
       <form ng-submit="main.search()">
         <input type="text" name="search" placeholder="Search..." ng-model="main.query">
-        <button>Search</button>
+        <button>Go</button>
       </form>
     </div>
 
