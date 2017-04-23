@@ -10,7 +10,7 @@ $white: #ffffff;
 $oAuthButton: #b1adb3;
 $tabBackground: #f1f1f1;
 $listShowBorder: #d8d6d9;
-
+$itemShowText: #3c3241;
 
 body {
   // width: 80vw;
@@ -265,13 +265,24 @@ header {
 .itemsShow {
   background: $white;
   padding: 5px 30px;
+  color: $itemShowText;
   .banner {
     height: 100px;
     width: 100%;
   }
   .price {
+    margin-top: 5px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .showTitle {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
   }
   .item {
     width: 60%;
@@ -289,7 +300,9 @@ header {
     float: left;
     background: inherit;
     .owner {
-      background: blue;
+      background: inherit;
+      padding: 16px;
+      border: 1px solid $listShowBorder;
     }
   }
   .editButton { // so far identical to loginFormButton
