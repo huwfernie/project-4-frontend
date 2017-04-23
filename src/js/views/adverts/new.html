@@ -1,21 +1,64 @@
-<h1>adverts New</h1>
+<!-- <h1>adverts New</h1> -->
 
-<form ng-submit="advertsNew.create()">
-  <p>
-    <label for="title">Title</label>
-    <input type="text" id="name" name="name" ng-model="advertsNew.advert.title" placeholder="Describe what you're looking for...">
-  </p>
-  <p>
-    <label for="body">body</label>
-    <textarea rows="4" cols="90" name="comment" ng-model="advertsNew.advert.body" placeholder="Describe what you want to buy..."></textarea>
-  </p>
-  <p>
-    <label for="valueMin">Price range £ :</label>
-    <input type="number" id="valueMin" name="valueMin" ng-model="advertsNew.advert.valueMin" placeholder="0.00">
 
-    <label for="valueMax">to</label>
-    <input type="number" id="valueMax" name="valueMax" ng-model="advertsNew.advert.valueMax" placeholder="1,000,000">
-  </p>
 
-  <button>Create</button>
-</form>
+<!-- <h1>offers new</h1> -->
+
+
+<!-- <form ng-submit="offersNew.create()">
+
+  <label for="title">Name</label>
+  <input type="text" id="title" name="title" ng-model="offersNew.offer.title"><br>
+
+  <label for="body">body</label><br>
+  <textarea rows="4" cols="90" name="comment" ng-model="offersNew.offer.body">.</textarea><br>
+
+  <label for="image">Image</label>
+  <input base64 type="file" id="image" name="image" ng-model="offersNew.offer.base64"><br>
+
+  <label for="value">value</label>
+  <input type="number" id="value" name="value" ng-model="offersNew.offer.value">
+
+  <button>Create advert</button>
+</form> -->
+
+
+<div class="listShowContainer ">
+  <div class="tabContainer clearfix">
+    <span class="tab"  ui-sref="offersNew">Selling</span>
+    <span class="tab active">Buying</span>
+    <span class="tab" ng-click="usersShow.setTab(3)"></span>
+    <span class="tab" ng-click="usersShow.setTab(4)"></span>
+    <span class="tab" ng-click="usersShow.setTab(5)"></span>
+  </div>
+  <p></p>
+  <!-- End of menu bar -->
+
+  <!-- Tab One -->
+  <div>
+    <span class="listTitle">Create a new advert to sell your things...</span>
+    <div class="newlisting">
+      <form ng-submit="advertsNew.create()">
+        <p>
+          <label class="showTitle" for="title">Title</label>
+          <input class="input" type="text" id="name" name="name" ng-model="advertsNew.advert.title" placeholder="Describe what you're looking for...">
+        </p>
+        <p>
+          <label class="showTitle" for="body">body</label>
+          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="advertsNew.advert.body" placeholder="Describe what you want to buy..."></textarea>
+        </p>
+        <p>
+          <label class="showTitle" for="valueMin">Price range £ :</label>
+          <input class="input" type="number" id="valueMin" name="valueMin" ng-model="advertsNew.advert.valueMin" placeholder="0.00">
+
+          <label class="showTitle" for="valueMax">to</label>
+          <input class="input" type="number" id="valueMax" name="valueMax" ng-model="advertsNew.advert.valueMax" placeholder="1,000,000">
+        </p>
+
+        <button>Create</button><button ui-sref="home">Discard</button>
+      </form>
+
+    </div>
+  </div>
+
+</div>
