@@ -1,27 +1,54 @@
-<h1>adverts edit</h1>
+<!-- <h1>adverts edit</h1> -->
 
-<strong>Title </strong>{{ advertsEdit.advert.title }}<br>
-<strong>Body </strong>{{ advertsEdit.advert.body }}<br>
-<strong>Price: £ </strong>{{ advertsEdit.advert.valueMax }} - {{ advertsEdit.advert.valueMin }}.
-<!-- {{ advertsEdit.advert }} -->
 
-<form ng-submit="advertsEdit.update()">
-  <label for="title">Title</label>
-  <input type="text" id="title" name="title" ng-model="advertsEdit.advert.title">
+<div class="preview">
+  <strong>Title </strong>{{ advertsEdit.advert.title }}<br>
+  <strong>Body </strong>{{ advertsEdit.advert.body }}<br>
+  <strong>Price: £ </strong>{{ advertsEdit.advert.valueMin }} - {{ advertsEdit.advert.valueMax }}.
+  <!-- {{ advertsEdit.advert }} -->
+</div>
 
-  <label for="body">body</label>
-  <textarea rows="4" cols="90" name="comment" ng-model="advertsEdit.advert.body">.</textarea>
-  <p>
-    <label for="valueMin">Price range £ :</label>
-    <input type="number" id="valueMin" name="valueMin" ng-model="advertsEdit.advert.valueMin">
 
-    <label for="valueMax">to</label>
-    <input type="number" id="valueMax" name="valueMax" ng-model="advertsEdit.advert.valueMax">
-  </p>
+<div class="listShowContainer ">
+  <div class="tabContainer clearfix">
+    <span class="tab active">Selling</span>
+    <span class="tab">Buying</span>
+    <span class="tab" ng-click="usersShow.setTab(3)"></span>
+    <span class="tab" ng-click="usersShow.setTab(4)"></span>
+    <span class="tab" ng-click="usersShow.setTab(5)"></span>
+  </div>
+  <p></p>
+  <!-- End of menu bar -->
 
-  <button>Update</button>
-</form>
+  <!-- Tab One -->
+  <div>
+    <span class="listTitle">Create a new advert to sell your things...</span>
+    <div class="newlisting">
+      <form ng-submit="advertsEdit.update()">
+        <p>
+          <label class="showTitle" for="title">Title</label>
+          <input class="input" type="text" id="title" name="title" ng-model="advertsEdit.advert.title">
+        </p>
 
-<p>
-  <button ng-click="advertsEdit.delete()">Delete</button>
-</p>
+        <p>
+          <label class="showTitle" for="body">body</label>
+          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="advertsEdit.advert.body">.</textarea>
+        </p>
+
+        <p>
+          <label class="showTitle" for="valueMin">Price range £ :</label>
+          <input class="input" type="number" id="valueMin" name="valueMin" ng-model="advertsEdit.advert.valueMin">
+        </p>
+
+        <p>
+          <label class="showTitle" for="valueMax">to</label>
+          <input class="input" type="number" id="valueMax" name="valueMax" ng-model="advertsEdit.advert.valueMax">
+        </p>
+
+
+        <button>Update</button><button ng-click="advertsEdit.delete()">Delete</button>
+      </form>
+    </div>
+  </div>
+
+</div>
