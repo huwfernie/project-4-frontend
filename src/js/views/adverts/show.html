@@ -44,7 +44,8 @@
     <h1>Search Results</h1>
     <span class="listTitle">There are {{ advertsShow.offers.length }} matches to this search.</span>
     <hr>
-    <div class="listShowlisting" ng-repeat="offer in advertsShow.offers" ui-sref="offersShow({id: offer.id})">
+    <div class="listShowlisting" ng-repeat="offer in advertsShow.offers" >
+      <!-- ui-sref="offersShow({id: offer.id})" -->
       <div class="clearfix">
         <div class="image">
           <img class="image" ng-src="{{ offer.image_src }}" alt="Listing Image" >
@@ -54,6 +55,7 @@
           <span>{{ offer.body | limitTo: 200 }}<span ng-if="offer.body.length > 200">...</span></span><br>
           <!-- id: {{ offer.id }}<br> -->
           <p>£{{ offer.value }}.</p>
+          <a ng-click="advertsShow.messagesNew(offer, advertsShow.advert)"><button class="messageButton">Contact this seller</button></a>
         </div>
       </div>
     </div>

@@ -1,22 +1,64 @@
-<h1> messages new</h1>
+<!-- <h1> messages new</h1> -->
 
-<div class="results">
-  a message about ...
-  <div class="outline">
-    <h3>{{ messagesNew.offer.title }}</h3>
-    {{ messagesNew.offer.body }}
-    <h4>Price: £{{ messagesNew.offer.value }}</h4>
-    <image class="thumbnail" src="{{ messagesNew.offer.image_src }}"></image>
+
+<div class="listShowContainer ">
+
+  <div>
+    <span class="listTitle">A message about...</span>
+    <div class="listShowlisting"  ui-sref="offersShow({id: offersEdit.offer.id})">
+
+    <div class="clearfix">
+      <div>
+        <img class="image" ng-src="{{ messagesNew.offer.image_src  }}" alt="Listing Image" >
+      </div>
+        <div class="content">
+          <div class="title">{{ messagesNew.offer.title }}</div>
+          <span>{{ messagesNew.offer.body }}</span><br>
+          <p>
+            £ {{ messagesNew.offer.value }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <!-- {{ messagesNew.message }} -->
+
+<div class="listShowContainer ">
+  <div class="tabContainer clearfix">
+    <span class="tab active">Selling</span>
+    <span class="tab"></span>
+    <span class="tab"></span>
+    <span class="tab"></span>
+    <span class="tab"></span>
+  </div>
+  <p></p>
+  <!-- End of menu bar -->
+
+  <!-- Tab One -->
+  <div>
+    <span class="listTitle">Update your advert to sell your things...</span>
+    <div class="newlisting">
+      <form ng-submit="messagesNew.create()">
+        <p>
+          <label class="showTitle" for="title">Subject:</label>
+          <input class="input" type="text" id="title" name="title" ng-model="messagesNew.message.subject">
+        </p>
+
+        <p>
+          <label class="showTitle" for="body">Message:</label>
+          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="messagesNew.message.body">.</textarea>
+        </p>
+
+        <div class="padding"></div>
+
+        <button class="oneThirdButton">Send</button>
+        <button class="oneThirdButton" ui-sref="advertsShow({id: messagesNew.offer.id})">View advert</button>
+        <button class="oneThirdButton">Go Back</button>
+      </form>
+    </div>
   </div>
 
-  <div class="outline">
-    <form ng-submit="messagesNew.create()" id="messageForm">
-      <label for="subject">Subject</label>
-      <input type="text" id="subject" name="subject" ng-model="messagesNew.message.subject">
-
-      <textarea rows="4" cols="90" name="comment" ng-model="messagesNew.message.body" form="messageForm">Enter text here...</textarea>
-      <button>Send</button>
-    </form>
-  </div>
-  {{ messagesNew.message }}
 </div>

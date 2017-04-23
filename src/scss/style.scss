@@ -253,7 +253,6 @@ header {
       max-width: 630px;
       padding-left: 20px;
       float: left;
-
     }
   }
 }
@@ -322,6 +321,10 @@ header {
       background: #733a3a;
     }
   }
+  .messageButton {
+    color: red;
+    z-index: 10;
+  }
 }
 
 // **************************
@@ -360,16 +363,27 @@ header {
     color: $searchbar;
     resize: none;
   }
-}
-
-// for messages that appear on the users profile page
-.messages_sent {
-  border-color: red;
-  margin-right: 80px;
-}
-.messages_recieved {
-  border-color: green;
-  margin-left: 80px;
+  .priceInput {
+    @extend .input;
+    width: 100px;
+  }
+  .oneThirdButton {
+    text-align: center;  // change
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 16px;
+    width: 33%;
+    height: 35px;
+    line-height: 35px;
+    margin: 8px auto;
+    color: $white;
+    background: $searchButton;
+    transition: background 0.5s ease;
+    &:hover {
+      background: #733a3a;
+    }
+  }
 }
 
 // For warning messages broadcast on rootscope
@@ -421,6 +435,15 @@ header {
   border-radius: 30px;
   padding: 5px 15px;
   overflow: hidden;
+}
+// for messages that appear on the users profile page
+.messages_sent {
+  border-color: red;
+  margin-right: 80px;
+}
+.messages_recieved {
+  border-color: green;
+  margin-left: 80px;
 }
 
 // used in the results to a new advert page

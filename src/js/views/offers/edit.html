@@ -1,31 +1,71 @@
-<h1>offers edit</h1>
+<!-- <h1>offers edit</h1> -->
 
-<div class="outline">
-  <strong>Title </strong>{{ offersEdit.offer.title }}<br>
-  <strong>Body </strong>{{ offersEdit.offer.body }}<br>
-  <strong>Price: £ </strong>{{ offersEdit.offer.value}}.<br>
-  <img class="thumbnail" ng-src="{{ offersEdit.offer.image_src }}">
+<div class="listShowContainer ">
+
+  <div>
+    <span class="listTitle">Preview</span>
+    <div class="listShowlisting"  ui-sref="offersShow({id: offersEdit.offer.id})">
+
+    <div class="clearfix">
+      <div>
+        <img class="image" ng-src="{{ offersEdit.offer.image_src }}" alt="Listing Image" >
+      </div>
+        <div class="content">
+          <div class="title">{{ offersEdit.offer.title }}</div>
+          <span>{{ offersEdit.offer.body }}</span><br>
+          <p>
+            £ {{ offersEdit.offer.value }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
-<!-- {{ offersEdit.offer }} -->
 
-<form ng-submit="offersEdit.update()">
+<div class="listShowContainer ">
+  <div class="tabContainer clearfix">
+    <span class="tab active">Selling</span>
+    <span class="tab"></span>
+    <span class="tab"></span>
+    <span class="tab"></span>
+    <span class="tab"></span>
+  </div>
+  <p></p>
+  <!-- End of menu bar -->
 
-  <label for="title">Name</label>
-  <input type="text" id="name" name="name" ng-model="offersEdit.offer.title">
-  <p>
-    <label for="body">body</label>
-    <textarea rows="4" cols="90" name="comment" ng-model="offersEdit.offer.body">.</textarea><br>
-  </p>
-  <p>
-    <label for="image">Image</label>
-    <input base64 type="file" id="image" name="image" ng-model="offersEdit.offer.base64">
-  </p>
-  <label for="value">valueMax</label>
-  <input type="number" id="valueMax" name="valueMax" ng-model="offersEdit.offer.value">
+  <!-- Tab One -->
+  <div>
+    <span class="listTitle">Update your advert to sell your things...</span>
+    <div class="newlisting">
+      <form ng-submit="offersEdit.update()">
+        <p>
+          <label class="showTitle" for="title">Title:</label>
+          <input class="input" type="text" id="title" name="title" ng-model="offersEdit.offer.title">
+        </p>
 
-  <button>Update</button>
-</form>
+        <p>
+          <label class="showTitle" for="body">Description: you can use markdown to add styling</label>
+          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="offersEdit.offer.body">.</textarea>
+        </p>
 
-<p>
-  <button ng-click="offersEdit.delete()">Delete</button>
-</p>
+        <p>
+          <label  class="showTitle" for="image">Image</label>
+          <input class="input" base64 type="file" id="image" name="image" ng-model="offersNew.offer.base64"><br>
+        </p>
+
+        <p>
+          <label class="showTitle" for="valueMin">Price £ :</label>
+          <input class="priceInput" type="number" id="valueMin" name="valueMin" ng-model="offersEdit.offer.value">
+        </p>
+
+        <div class="padding"></div>
+
+        <button class="oneThirdButton">Update</button>
+        <button class="oneThirdButton" ui-sref="advertsShow({id: offersEdit.offer.id})">Cancel</button>
+        <button class="oneThirdButton" ng-click="advertsEdit.delete()">Delete this advert</button>
+      </form>
+    </div>
+  </div>
+
+</div>

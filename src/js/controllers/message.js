@@ -29,7 +29,7 @@ function messagesNewCtrl(User, Message, $stateParams, offerService, advertServic
     Message
       .save({ message: vm.message})
       .$promise
-      .then(() => $state.go('usersShow', ({id: vm.currentUser.id})));
+      .then((data) => $state.go('profile', ({id: data.sender_id})));
   }
   vm.create = create;
 }

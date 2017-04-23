@@ -23,17 +23,18 @@
   <!-- Tab One -->
   <div  ng-if="usersShow.tab == 1">
     <span class="listTitle">What I want to buy - You currently have {{ usersShow.currentUser.adverts.length }} adverts</span>
-    <div class="listShowlisting" ng-repeat="advert in usersShow.currentUser.adverts" ui-sref="advertsShow({id: advert.id})">
-
-      <div class="clearfix">
-        <div class="image">
-          <img ng-src="#">
-        </div>
-        <div class="content">
-          <div class="title">{{ advert.title }}</div>
-          <span>{{ advert.body | limitTo: 200 }}<span ng-if="advert.body.length > 200">...</span></span><br>
-          <strong>id: </strong>{{ advert.id }}<br>
-          <strong>Price range: </strong>£{{ advert.valueMin }} to  £{{ advert.valueMax }}.<br>
+    <div class="listShowlisting" ng-repeat="advert in usersShow.currentUser.adverts">
+      <div ui-sref="advertsShow({id: advert.id})">
+        <div class="clearfix">
+          <div class="image">
+            <img ng-src="#">
+          </div>
+          <div class="content">
+            <div class="title">{{ advert.title }}</div>
+            <span>{{ advert.body | limitTo: 200 }}<span ng-if="advert.body.length > 200">...</span></span><br>
+            <strong>id: </strong>{{ advert.id }}<br>
+            <strong>Price range: </strong>£{{ advert.valueMin }} to  £{{ advert.valueMax }}.<br>
+          </div>
         </div>
       </div>
 
@@ -85,17 +86,18 @@
   <!-- Tab Two -->
   <div  ng-if="usersShow.tab == 2">
     <span class="listTitle">offers - You currently have {{ usersShow.currentUser.offers.length }} itmes for sale</span>
-    <div class="listShowlisting" ng-repeat="offer in usersShow.currentUser.offers" ui-sref="offersShow({id: offer.id})">
-
-      <div class="clearfix">
-        <div class="image">
-          <img class="image" ng-src="{{ offer.image_src }}" alt="Listing Image" >
-        </div>
-        <div class="content">
-          <div class="title">{{ offer.title }}</div>
-          <span>{{ offer.body | limitTo: 200 }}<span ng-if="offer.body.length > 200">...</span></span><br>
-          <!-- id: {{ offer.id }}<br> -->
-          <p>£{{ offer.value }}.</p>
+    <div class="listShowlisting" ng-repeat="offer in usersShow.currentUser.offers">
+      <div  ui-sref="offersShow({id: offer.id})">
+        <div class="clearfix">
+          <div class="image">
+            <img class="image" ng-src="{{ offer.image_src }}" alt="Listing Image" >
+          </div>
+          <div class="content">
+            <div class="title">{{ offer.title }}</div>
+            <span>{{ offer.body | limitTo: 200 }}<span ng-if="offer.body.length > 200">...</span></span><br>
+            <!-- id: {{ offer.id }}<br> -->
+            <p>£{{ offer.value }}.</p>
+          </div>
         </div>
       </div>
 

@@ -25,11 +25,17 @@ function offersShowCtrl(Offer, $stateParams, userService, User, $auth) {
   vm.offer = Offer.get($stateParams);
 }
 
-offersEditCtrl.$inject = ['Offer', '$stateParams', '$state'];
-function offersEditCtrl(Offer, $stateParams, $state) {
+offersEditCtrl.$inject = ['Offer', '$stateParams', '$state', 'userService', 'User', '$auth'];
+function offersEditCtrl(Offer, $stateParams, $state, userService, User, $auth) {
   const vm = this;
 
   vm.offer = Offer.get($stateParams);
+
+  if (!userService.currentUser.id) {
+    if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
+  } else {
+    vm.currentUser = userService.currentUser;
+  }
 
   function offersUpdate() {
     Offer
@@ -45,8 +51,8 @@ function offersEditCtrl(Offer, $stateParams, $state) {
     // help, this doesn't work but it's identical to advert and it works in insomnia
     vm.offer
       .$remove()
-      .then(() => $state.go('offersIndex'));
-      // .then(() => $state.go('usersShow', ({id: id})));
+      // .then(() => $state.go('offersIndex')); // help
+      .then(() => $state.go('usersShow', ({id: vm.currentUser.id})));
   }
   vm.delete = offersDelete;
 }
