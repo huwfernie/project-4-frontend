@@ -1,8 +1,7 @@
-<h1>offers new</h1>
+<!-- <h1>offers new</h1> -->
 
 
-
-<form ng-submit="offersNew.create()">
+<!-- <form ng-submit="offersNew.create()">
 
   <label for="title">Name</label>
   <input type="text" id="title" name="title" ng-model="offersNew.offer.title"><br>
@@ -17,8 +16,45 @@
   <input type="number" id="value" name="value" ng-model="offersNew.offer.value">
 
   <button>Create advert</button>
-</form>
+</form> -->
 
-<p>
-  <button ui-sref="home">Discard</button>
-</p>
+
+<div class="listShowContainer ">
+  <div class="tabContainer clearfix">
+    <span class="tab active">Selling</span>
+    <span class="tab" ui-sref="advertsNew">Buying</span>
+    <span class="tab" ng-click="usersShow.setTab(3)"></span>
+    <span class="tab" ng-click="usersShow.setTab(4)"></span>
+    <span class="tab" ng-click="usersShow.setTab(5)"></span>
+  </div>
+  <p></p>
+  <!-- End of menu bar -->
+
+  <!-- Tab One -->
+  <div>
+    <span class="listTitle">Create a new advert to sell your things...</span>
+    <div class="newlisting">
+      <form ng-submit="offersNew.create()">
+        <p>
+          <label class="showTitle" for="title">Name</label><br>
+          <input class="input" type="text" id="title" name="title" ng-model="offersNew.offer.title">
+        </p>
+        <p>
+          <label class="showTitle" for="body">Description</label><br>
+          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="offersNew.offer.body">.</textarea><br>
+        </p>
+        <p>
+          <label  class="showTitle" for="image">Image</label>
+          <input class="input" base64 type="file" id="image" name="image" ng-model="offersNew.offer.base64"><br>
+        </p>
+        <p>
+          <label class="showTitle" for="value">value</label>
+          <input class="input" type="number" id="value" name="value" ng-model="offersNew.offer.value">
+        </p>
+
+        <button>Create advert</button><button ui-sref="home">Discard</button>
+      </form>
+    </div>
+  </div>
+
+</div>

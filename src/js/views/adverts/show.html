@@ -1,14 +1,76 @@
-<h1>adverts show</h1>
+<!-- <h1>Adverts Show</h1> -->
+
+
+<div class="itemsShow">
+
+  <div class="banner">
+  </div>
+
+  <div class="clearfix">
+    <div class="item">
+      <div class="showTitle">{{ advertsShow.advert.title }}</div>
+      <div class="price">£ {{ advertsShow.advert.valueMin }} -to- {{ advertsShow.advert.valueMax }}</div>
+      <img class="showImage" ng-src="{{ advertsShow.advert.image_src }}">
+      <div class="description">
+        <h3>Description</h3>
+        <hr>
+        <!-- // ng-bind is used because we are sending back html from the markdown parser -->
+        <div ng-bind-html="advertsShow.advert.html_body"></div><br>
+      </div>
+      <!-- {{ advertsShow.advert.user_id }} ++ {{ offersShow.currentUser.id }} or {{ offersShow.currentUser.id }} -->
+      <div class="editButton" ui-sref="advertsEdit({id: advertsShow.advert.id})" ng-if="advertsShow.advert.user_id === advertsShow.currentUser.id">
+        This is your advert, click here to edit it
+      </div>
+    </div>
+    <div class="right">
+      <div class="owner">
+        <h2>Owner</h2>
+        <hr>
+        <h2>Contact Details</h2>
+        <h2>Tel. 01326 123 123</h2>
+        <div class="editButton" ui-sref="offersEdit({id: advertsShow.advert.id})">
+          Email
+        </div>
+    </div>
+  </div>
+
+
+  <div class="banner">
+  </div>
+
+
+  </div>
+  <div class="listShowContainer ">
+    <h1>Search Results</h1>
+    <span class="listTitle">There are {{ advertsShow.offers.length }} matches to this search.</span>
+    <hr>
+    <div class="listShowlisting" ng-repeat="offer in advertsShow.offers" ui-sref="offersShow({id: offer.id})">
+      <div class="clearfix">
+        <div class="image">
+          <img class="image" ng-src="{{ offer.image_src }}" alt="Listing Image" >
+        </div>
+        <div class="content">
+          <div class="title">{{ offer.title }}</div>
+          <span>{{ offer.body | limitTo: 200 }}<span ng-if="offer.body.length > 200">...</span></span><br>
+          <!-- id: {{ offer.id }}<br> -->
+          <p>£{{ offer.value }}.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <h1>adverts show</h1>
 
 <div class="outline">
   <h1>Your Advert</h1>
   <strong>Title </strong>{{ advertsShow.advert.title }}<br>
   <strong>Body </strong>{{ advertsShow.advert.body }}<br>
   <strong>Price range: £ </strong>{{ advertsShow.advert.valueMin }} -to- {{ advertsShow.advert.valueMax }}.
-  <!-- {{ advertsShow.advert }} -->
+  {{ advertsShow.advert }}
   {{ advertsShow.advert.user_id}} ++ {{ advertsShow.currentUser.id }}
   <button ui-sref="advertsEdit({id: advertsShow.advert.id})" ng-if="advertsShow.advert.user_id === advertsShow.currentUser.id">Edit</button>
-    <!-- <button ng-click="advert.delete()">Delete</button> -->
 </div>
 <div class="results">
   <h1>Matching Results</h1>
@@ -20,4 +82,4 @@
     <image class="thumbnail" src="{{ offer.image_src }}"></image>
     <a ng-click="advertsShow.messagesNew(offer, advertsShow.advert)"><button>Contact this seller</button></a>
   </div>
-</div>
+</div> -->

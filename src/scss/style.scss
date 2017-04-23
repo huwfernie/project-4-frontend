@@ -324,6 +324,43 @@ header {
   }
 }
 
+// **************************
+// offersNew / Edit page
+// **************************
+
+.listShowContainer {
+  .newlisting {
+    padding: 30px;
+  }
+  .tab {
+    cursor: pointer;
+  }
+  .input {
+    box-sizing: border-box;
+    border-radius: 2px;
+    border: 1px solid $searchbar;
+    height: 35px;
+    line-height: 20px;
+    width: 100%;
+    padding: 0px 8px;
+    font-size: 16px;
+    border-radius: 3px;
+    color: $searchbar;
+  }
+  .inputArea {
+    box-sizing: border-box;
+    border-radius: 2px;
+    border: 1px solid $searchbar;
+    height: 100px;
+    line-height: 20px;
+    width: 100%;
+    padding: 0px 8px;
+    font-size: 16px;
+    border-radius: 3px;
+    color: $searchbar;
+    resize: none;
+  }
+}
 
 // for messages that appear on the users profile page
 .messages_sent {
