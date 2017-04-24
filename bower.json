@@ -20,5 +20,8 @@
     "angular-ui-router": "^0.4.2",
     "satellizer": "^0.15.5",
     "angular-sanitize": "^1.6.4"
+  },
+  "resolutions": {
+    "angular": "^1.5.8"
   }
 }
