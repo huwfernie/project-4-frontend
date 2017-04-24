@@ -26,8 +26,8 @@
     <div class="listShowlisting" ng-repeat="advert in usersShow.currentUser.adverts">
       <div ui-sref="advertsShow({id: advert.id})">
         <div class="clearfix">
-          <div class="image">
-            <img ng-src="#">
+          <div>
+            <img class="image" ng-src="#">
           </div>
           <div class="content">
             <div class="title">{{ advert.title }}</div>
@@ -89,7 +89,7 @@
     <div class="listShowlisting" ng-repeat="offer in usersShow.currentUser.offers">
       <div  ui-sref="offersShow({id: offer.id})">
         <div class="clearfix">
-          <div class="image">
+          <div>
             <img class="image" ng-src="{{ offer.image_src }}" alt="Listing Image" >
           </div>
           <div class="content">
@@ -140,7 +140,7 @@
 
       <div>
         <div class="clearfix">
-          <div class="image">
+          <div>
             <img class="image" ng-src="{{ offer.image_src }}" alt="Profile Image" >
           </div>
           <div class="content">
@@ -149,6 +149,7 @@
             <div class="title"></div>
             <span>{{ usersShow.currentUser.email | limitTo: 30 }}<span ng-if="offer.body.length > 200">...</span></span><br>
             <span>0{{ usersShow.currentUser.phoneNumber }}</span><br>
+            <span>{{ usersShow.currentUser.address }}</span><br>
           </div>
         </div>
       </div>
