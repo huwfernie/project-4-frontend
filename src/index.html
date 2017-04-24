@@ -18,7 +18,8 @@
         <a ui-sref="offersIndex">Offers</a>
       </nav>
       <nav class="header">
-        <span class="navLogo"></span>
+        <span class="navLogo">
+        </span>
         <span ng-if="main.isAuthenticated()" class="username">hello {{ main.currentUser.username }}</span>
 
         <a ui-sref="login" ui-sref-active="active" ng-if="!main.isAuthenticated()">Login</a>

@@ -43,12 +43,13 @@ header {
     }
     .navLogo {
       float: left;
-      margin-left: 8px;
+      margin-left: 15px;
       margin-top: 10px;
       height: 35px;
       width: 135px;
-      background-image: url('https://www.gumtree.com/static/1/resources/assets/rwd/images/svg/primary_logo.svg?v=a8e305637f');
-      background-size: cover;
+      background-image: url('../images/yabeetwo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
 }
