@@ -369,6 +369,7 @@ header {
     width: 100px;
   }
   .oneThirdButton {
+    display: inline-block;
     text-align: center;  // change
     padding: 0;
     margin: 0;
@@ -378,6 +379,23 @@ header {
     height: 35px;
     line-height: 35px;
     margin: 8px auto;
+    color: $white;
+    background: $searchButton;
+    transition: background 0.5s ease;
+    &:hover {
+      background: #733a3a;
+    }
+  }
+  .oneHalfButton {
+    display: inline-block;
+    text-align: center;  // change
+    padding: 0;
+    border: 0;
+    font-size: 16px;
+    width: 40%;
+    height: 35px;
+    line-height: 35px;
+    margin: 8px 5%;
     color: $white;
     background: $searchButton;
     transition: background 0.5s ease;

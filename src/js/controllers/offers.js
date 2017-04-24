@@ -47,14 +47,16 @@ function offersEditCtrl(Offer, $stateParams, $state, userService, User, $auth) {
 
 
   function offersDelete() {
+    console.log('clikc');
     // const id = vm.offer.user_id;
     // help, this doesn't work but it's identical to advert and it works in insomnia
     vm.offer
       .$remove()
       // .then(() => $state.go('offersIndex')); // help
-      .then(() => $state.go('usersShow', ({id: vm.currentUser.id})));
+      .then(() => $state.go('profile', ({id: vm.currentUser.id})));
   }
   vm.delete = offersDelete;
+
 }
 
 offersNewCtrl.$inject = ['Offer', '$stateParams', '$state', '$auth', 'User'];
@@ -62,13 +64,10 @@ function offersNewCtrl(Offer, $stateParams, $state, $auth, User) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-  vm.offer = {
-    'title': 'TEST',
-    'body': 'test',
-    'value': 24
-  };
+  vm.offer = {};
 
   function create() {
+    console.log(vm.currentUser);
     User
       .get({ id: $auth.getPayload().id })
       .$promise

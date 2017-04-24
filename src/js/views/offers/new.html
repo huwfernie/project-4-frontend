@@ -1,24 +1,6 @@
 <!-- <h1>offers new</h1> -->
 
 
-<!-- <form ng-submit="offersNew.create()">
-
-  <label for="title">Name</label>
-  <input type="text" id="title" name="title" ng-model="offersNew.offer.title"><br>
-
-  <label for="body">body</label><br>
-  <textarea rows="4" cols="90" name="comment" ng-model="offersNew.offer.body">.</textarea><br>
-
-  <label for="image">Image</label>
-  <input base64 type="file" id="image" name="image" ng-model="offersNew.offer.base64"><br>
-
-  <label for="value">value</label>
-  <input type="number" id="value" name="value" ng-model="offersNew.offer.value">
-
-  <button>Create advert</button>
-</form> -->
-
-
 <div class="listShowContainer ">
   <div class="tabContainer clearfix">
     <span class="tab active">Selling</span>
@@ -37,11 +19,11 @@
       <form ng-submit="offersNew.create()">
         <p>
           <label class="showTitle" for="title">Name</label><br>
-          <input class="input" type="text" id="title" name="title" ng-model="offersNew.offer.title">
+          <input class="input" type="text" id="title" name="title" ng-model="offersNew.offer.title" placeholder="Create a title for your listing">
         </p>
         <p>
           <label class="showTitle" for="body">Description</label><br>
-          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="offersNew.offer.body">.</textarea><br>
+          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="offersNew.offer.body" placeholder="Add some details more details...">.</textarea><br>
         </p>
         <p>
           <label  class="showTitle" for="image">Image</label>
@@ -49,10 +31,10 @@
         </p>
         <p>
           <label class="showTitle" for="value">value</label>
-          <input class="input" type="number" id="value" name="value" ng-model="offersNew.offer.value">
+          <input class="input" type="number" id="value" name="value" ng-model="offersNew.offer.value" placeholder="£123.00">
         </p>
 
-        <button>Create advert</button><button ui-sref="home">Discard</button>
+        <button class="oneHalfButton">Create advert</button><button class="oneHalfButton" ui-sref="home">Discard</button>
       </form>
     </div>
   </div>

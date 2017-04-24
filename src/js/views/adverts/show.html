@@ -22,13 +22,14 @@
         This is your advert, click here to edit it
       </div>
     </div>
+
     <div class="right">
       <div class="owner">
-        <h2>Owner</h2>
+        <h2>{{ advertsShow.advert.user.username }}</h2>
         <hr>
         <h2>Contact Details</h2>
-        <h2>Tel. 01326 123 123</h2>
-        <div class="editButton" ui-sref="offersEdit({id: advertsShow.advert.id})">
+        <h2>Tel. 0{{ advertsShow.advert.user.phoneNumber }}</h2>
+        <div class="editButton" ui-sref="advertsEdit({id: advertsShow.offer.id})">
           Email
         </div>
     </div>

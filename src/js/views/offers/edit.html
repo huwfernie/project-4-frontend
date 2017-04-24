@@ -61,11 +61,10 @@
 
         <div class="padding"></div>
 
-        <button class="oneThirdButton">Update</button>
-        <button class="oneThirdButton" ui-sref="advertsShow({id: offersEdit.offer.id})">Cancel</button>
-        <button class="oneThirdButton" ng-click="advertsEdit.delete()">Delete this advert</button>
+        <button class="oneThirdButton">Save Updates</button>
+        <a ui-sref="offersShow({id: offersEdit.offer.id})"><button class="oneThirdButton">Cancel</button></a>
+        <div class="oneThirdButton" ng-click="offersEdit.delete()">Delete this advert</div>
       </form>
     </div>
   </div>
-
 </div>
