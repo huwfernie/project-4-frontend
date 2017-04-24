@@ -13,7 +13,7 @@
   <div class="tabContainer clearfix">
     <span class="tab active" ng-class="{active:usersShow.tab == 1}" ng-click="usersShow.setTab(1)">What I'm looking for</span>
     <span class="tab" ng-class="{active:usersShow.tab == 2}" ng-click="usersShow.setTab(2)">My itmes for sale</span>
-    <span class="tab" ng-click="usersShow.setTab(3)">My Details</span>
+    <span class="tab" ng-class="{active:usersShow.tab == 3}" ng-click="usersShow.setTab(3)">My Details</span>
     <span class="tab" ng-click="usersShow.setTab(4)"></span>
     <span class="tab" ng-click="usersShow.setTab(5)"></span>
   </div>
@@ -131,4 +131,29 @@
       <!-- Reply to Messages section -->
     </div>
   </div>
+
+
+  <!-- Tab Three -->
+  <div  ng-if="usersShow.tab == 3">
+    <span class="listTitle">Your Details</span>
+    <div class="listShowlisting">
+
+      <div>
+        <div class="clearfix">
+          <div class="image">
+            <img class="image" ng-src="{{ offer.image_src }}" alt="Profile Image" >
+          </div>
+          <div class="content">
+            <div class="title">{{ usersShow.currentUser.username }}</div>
+            <div class="title"></div>
+            <div class="title"></div>
+            <span>{{ usersShow.currentUser.email | limitTo: 30 }}<span ng-if="offer.body.length > 200">...</span></span><br>
+            <span>0{{ usersShow.currentUser.phoneNumber }}</span><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>

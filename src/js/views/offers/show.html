@@ -26,10 +26,10 @@
     </div>
     <div class="right">
       <div class="owner">
-        <h2>Owner</h2>
+        <h2>{{ offersShow.offer.user.username }}</h2>
         <hr>
         <h2>Contact Details</h2>
-        <h2>Tel. 01326 123 123</h2>
+        <h2>Tel. 0{{ offersShow.offer.user.phoneNumber }}</h2>
         <div class="editButton" ui-sref="offersEdit({id: offersShow.offer.id})">
           Email
         </div>
