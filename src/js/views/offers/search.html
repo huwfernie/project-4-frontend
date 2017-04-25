@@ -27,36 +27,7 @@
         </div>
       </div>
 
-      <!-- Messages Section -->
-      <p></p>
-      <div class="results">
-        <strong>messages</strong> (red is what I send)
-        <div ng-class="{'outline messages_sent': usersShow.currentUser.id == message.sender_id, 'outline messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="offer.id == message.offer_id">
-          <strong>Subject: </strong>{{ message.subject }}<br>
-          <strong>Body: </strong>{{ message.body }}<br>
-          <strong>Created at: </strong>{{ message.created_at }}<br>
-          <strong>Sender id: </strong>{{ message.sender_id }}<br>
-          <strong>Reciever id: </strong>{{ message.reciever_id }}<br>
-          <strong>advert_id: </strong>{{ message.advert_id }}<br>
-          <strong>offer_id: </strong>{{ message.offer_id }}<br>
-          <button ng-show="usersShow.currentUser.id != message.sender_id" class="ng-hide" ng-click="usersShow.setupReply(message)">Reply</button>
-        </div>
-      </div>
-      <!-- Messages Section -->
-      <!-- Reply to Messages section -->
-      <div class="results" ng-show="usersShow.toggleReply">
-        <strong>messages reply</strong>
-        <form ng-submit="usersShow.replyToMessage()" id="messageForm">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" ng-model="usersShow.reply.subject">
 
-          <textarea rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageForm">Enter text here...</textarea>
-          <button>Send</button>
-          <button ng-click="usersShow.clearReply()">Discard</button>
-        </form>
-        {{ usersShow.reply }}
-      </div>
-      <!-- Reply to Messages section -->
     </div>
   </div>
 </div>

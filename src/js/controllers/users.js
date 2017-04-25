@@ -14,6 +14,7 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
   const vm = this;
   vm.toggleReply = false;
   vm.tab = 1;
+  vm.messagesHidden = true;
 
   function getCurrentUser() {
     User
@@ -37,9 +38,9 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
 
   // this function runs when you click reply from a recieved message, it sets all the inital values for the reply
   vm.setupReply = setupReply;
-  function setupReply(message) {
-    console.log('ReplyToOffer');
-    vm.toggleReply = !vm.toggleReply;
+  function setupReply(message, offer) {
+    offer.toggleReply = !offer.toggleReply;
+    offer.messagesVisible = false;
     vm.reply = {
       subject: `re: ${message.subject}`,
       body: 'Your text here',
@@ -57,8 +58,8 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
     Message
       .save({ message: vm.reply})
       .$promise
-      .then(() => {
-        vm.currentUser.messages.push(vm.reply);
+      .then((message) => {
+        vm.currentUser.messages.push(message);
         vm.reply = {};
       });
   }
@@ -66,5 +67,10 @@ function usersShowCtrl(User, $auth, $http, $stateParams, offerService, advertSer
   vm.clearReply = clearReply;
   function clearReply() {
     vm.reply = {};
+  }
+
+  vm.toggleMessages = toggleMessages;
+  function toggleMessages() {
+    vm.messagesHidden = !vm.messagesHidden;
   }
 }

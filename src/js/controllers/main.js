@@ -22,7 +22,7 @@ function MainCtrl(User, $rootScope, $state, $auth) {
   });
 
 
-  const protectedStates = ['offersNew'];
+  const protectedStates = ['offersNew', 'advertsNew'];
 
   $rootScope.$on('$stateChangeStart', (e, toState) => {
     if((!$auth.isAuthenticated() && protectedStates.includes(toState.name))) {

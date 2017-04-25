@@ -5,7 +5,7 @@
 
   <div>
     <span class="listTitle">A message about...</span>
-    <div class="listShowlisting"  ui-sref="offersShow({id: offersEdit.offer.id})">
+    <div class="listShowlisting"  ui-sref="offersShow({id: messagesNew.offer.id})">
 
     <div class="clearfix">
       <div>
@@ -13,7 +13,9 @@
       </div>
         <div class="content">
           <div class="title">{{ messagesNew.offer.title }}</div>
-          <span>{{ messagesNew.offer.body }}</span><br>
+          <div ng-bind-html="messagesNew.offer.html_body | limitTo: 200 ">
+            <span ng-if="messagesNew.offer.body.length > 200">...</span>
+          </div>
           <p>
             £ {{ messagesNew.offer.value }}
           </p>
@@ -49,7 +51,7 @@
 
         <p>
           <label class="showTitle" for="body">Message:</label>
-          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="messagesNew.message.body">.</textarea>
+          <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="messagesNew.message.body" placeholder="Add your message...">.</textarea>
         </p>
 
         <div class="padding"></div>

@@ -9,8 +9,8 @@ function messagesNewCtrl(User, Message, $stateParams, offerService, advertServic
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.message = {
-    subject: 'Test',
-    body: 'test',
+    subject: '',
+    body: '',
     sender_id: vm.currentUser.id,
     reciever_id: offerService.currentOffer.user_id,
     advert_id: advertService.currentAdvert.id,
