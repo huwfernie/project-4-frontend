@@ -31,9 +31,10 @@
       </nav>
     </header>
     <div class="searchBar">
-      <form ng-submit="main.search()">
+      <form>
         <input type="text" name="search" placeholder="Search..." ng-model="main.query">
-        <button>Go</button>
+        <button ng-click="main.searchOffers()">To Buy</button>
+        <button ng-click="main.searchAdverts()">To Sell</button>
       </form>
     </div>
 

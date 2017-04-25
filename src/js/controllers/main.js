@@ -40,11 +40,15 @@ function MainCtrl(User, $rootScope, $state, $auth) {
   }
   vm.logout = logout;
 
-
-  function search() {
+  function searchOffers() {
     // vm.query;
-
     $state.go('offersSearch', { query: vm.query }); // Mike Fixed this!
   }
-  vm.search = search;
+  vm.searchOffers = searchOffers;
+
+  function searchAdverts() {
+    // vm.query;
+    $state.go('advertsSearch', { query: vm.query }); // Mike Fixed this!
+  }
+  vm.searchAdverts = searchAdverts;
 }

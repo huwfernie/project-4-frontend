@@ -1,0 +1,33 @@
+<!--  -->
+<div class="listShowContainer ">
+  <div class="tabContainer clearfix">
+    <span class="tab" ui-sref="offersSearch">I'm looking for</span>
+    <span class="tab active">People are looking for</span>
+    <span class="tab"></span>
+    <span class="tab"></span>
+    <span class="tab"></span>
+  </div>
+  <p></p>
+  <!-- End of menu bar -->
+
+  <!-- Tab One -->
+  <div>
+    <span class="listTitle">You currently have {{ advertsSearch.adverts.length }} results</span>
+    <div class="listShowlisting" ng-repeat="advert in advertsSearch.adverts" ui-sref="advertsShow({id: advert.id})">
+
+      <div class="clearfix">
+        <div>
+          <img class="image" src="/images/noimage.png" alt="Listing Image" >
+        </div>
+        <div class="content">
+          <div class="title">{{ advert.title }}</div>
+          <span>{{ advert.body | limitTo: 200 }}<span ng-if="advert.body.length > 200">...</span></span><br>
+          <!-- id: {{ advert.id }}<br> -->
+          <p>£{{ advert.valueMin }} to {{ advert.valueMax }}.</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

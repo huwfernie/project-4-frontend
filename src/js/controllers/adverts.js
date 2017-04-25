@@ -3,6 +3,7 @@ angular
   .controller('advertsIndexCtrl', advertsIndexCtrl)
   .controller('advertsNewCtrl', advertsNewCtrl)
   .controller('advertsShowCtrl', advertsShowCtrl)
+  .controller('advertsSearchCtrl', advertsSearchCtrl)
   .controller('advertsEditCtrl', advertsEditCtrl);
 
 advertsIndexCtrl.$inject = ['Advert'];
@@ -82,4 +83,20 @@ function advertsEditCtrl($stateParams, Advert, $state) {
   }
 
   vm.update = advertsUpdate;
+}
+
+advertsSearchCtrl.$inject = ['API_URL', '$state', '$http', '$stateParams'];
+function advertsSearchCtrl(API_URL, $state, $http, $stateParams) {
+  const vm = this;
+
+  $http({
+    url: `${API_URL}/adverts/search`,
+    method: 'GET',
+    params: {
+      search: $stateParams.query
+    }
+  })
+  .then((response) => {
+    vm.adverts = response.data;
+  });
 }

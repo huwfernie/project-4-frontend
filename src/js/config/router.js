@@ -46,6 +46,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/adverts/edit.html',
       controller: 'advertsEditCtrl as advertsEdit'
     })
+    .state('advertsSearch', {
+      url: '/advertsSearch/?query',
+      templateUrl: 'js/views/adverts/search.html',
+      controller: 'advertsSearchCtrl as advertsSearch'
+    })
     // Messages ------------------------------------------------------
 
     .state('messagesNew', {
