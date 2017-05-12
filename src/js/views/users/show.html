@@ -41,7 +41,7 @@
       <!-- Messages Section -->
       <p></p>
       <div class="messagesSection clearfix" ng-class="{ collapsed: !offer.messagesVisible }" ng-click="offer.messagesVisible = !offer.messagesVisible">
-        <strong>messages</strong> (red is what I send)
+        <strong>messages</strong>
         <div ng-class="{'messages messages_sent': usersShow.currentUser.id == message.sender_id, 'messages messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="advert.id == message.advert_id">
           <div class="title">
             <strong>Subject: </strong>{{ message.subject }}<br>
@@ -64,7 +64,7 @@
       <!-- Messages Section -->
       <!-- Reply to Messages section -->
       <div class="messagesSection" ng-show="offer.toggleReply">
-        <strong>messages reply</strong>
+        <strong>messages</strong>
         <form ng-submit="usersShow.replyToMessage()" id="messageFormOffers">
           <p>
             <label class="showTitle" for="subjectOffers">Subject</label>
@@ -112,7 +112,7 @@
 
       <!-- Messages section -->
       <div class="messagesSection clearfix" ng-class="{ collapsed: !offer.messagesVisible }" ng-click="offer.messagesVisible = !offer.messagesVisible">
-        <strong>messages joined</strong> (red is what I send)
+        <strong>messages</strong>
         <div ng-class="{'messages messages_sent': usersShow.currentUser.id == message.sender_id, 'messages messages_recieved': usersShow.currentUser.id != message.sender_id}" ng-repeat="message in usersShow.currentUser.messages | orderBy : 'created_at'" ng-if="offer.id == message.offer_id">
           <div class="title">
             <strong>Subject: </strong>{{ message.subject }}<br>
@@ -132,10 +132,10 @@
       <!-- Reply to Messages section -->
       <div class="messagesSection" ng-show="offer.toggleReply">
         <strong>messages reply</strong>
-        <form ng-submit="usersShow.replyToMessage()" id="messageFormOffers">
+        <form ng-submit="usersShow.replyToMessage()" id="messageFormOffers2">
           <p>
-            <label class="showTitle" for="subjectOffers">Subject</label>
-            <input class="input" type="text" id="subjectOffers" name="subject" ng-model="usersShow.reply.subject">
+            <label class="showTitle" for="subjectOffers2">Subject</label>
+            <input class="input" type="text" id="subjectOffers2" name="subject" ng-model="usersShow.reply.subject">
           </p>
 
           <textarea class="inputArea" rows="4" cols="90" name="comment" ng-model="usersShow.reply.body" form="messageFormOffers">Enter text here...</textarea>

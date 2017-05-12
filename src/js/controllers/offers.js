@@ -47,12 +47,8 @@ function offersEditCtrl(Offer, $stateParams, $state, userService, User, $auth) {
 
 
   function offersDelete() {
-    console.log('clikc');
-    // const id = vm.offer.user_id;
-    // help, this doesn't work but it's identical to advert and it works in insomnia
     vm.offer
       .$remove()
-      // .then(() => $state.go('offersIndex')); // help
       .then(() => $state.go('profile', ({id: vm.currentUser.id})));
   }
   vm.delete = offersDelete;

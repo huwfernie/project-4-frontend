@@ -30,9 +30,11 @@
         <hr>
         <h2>Contact Details</h2>
         <h2>Tel. 0{{ offersShow.offer.user.phoneNumber }}</h2>
-        <div class="editButton" ui-sref="offersEdit({id: offersShow.offer.id})">
+        <a href="mailto:{{ offersShow.offer.user.email }}">
+          <div class="editButton">
           Email
-        </div>
+          </div>
+        </a>
     </div>
   </div>
 

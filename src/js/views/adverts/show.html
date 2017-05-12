@@ -54,11 +54,13 @@
           <div>
             <img class="image" ng-src="{{ offer.image_src }}" alt="Listing Image" >
           </div>
-          <div class="content">
-            <div class="title">{{ offer.title }}</div>
-            <span>{{ offer.body | limitTo: 200 }}<span ng-if="offer.body.length > 200">...</span></span><br>
-            <!-- id: {{ offer.id }}<br> -->
         </a>
+          <div class="content">
+            <a ui-sref="offersShow({ id: offer.id })">
+              <div class="title">{{ offer.title }}</div>
+              <span>{{ offer.body | limitTo: 200 }}<span ng-if="offer.body.length > 200">...</span></span><br>
+              <!-- id: {{ offer.id }}<br> -->
+            </a>
           <p>£{{ offer.value }}.</p>
           <a ng-click="advertsShow.messagesNew(offer, advertsShow.advert)"><button class="oneThirdButton">Contact this seller</button></a>
         </div>
