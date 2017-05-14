@@ -5,13 +5,13 @@
 ***Yabee*** is a second hand trading application, built with Ruby on Rails. The concept is simple - a user can post an advert about an item they would like to buy, post an offer about an item they are selling, and write messages between eachother when one persons advert matches anothers offer. 
 
 
-![Welcome](./src/images/yabee-readme-0.png)
+![homepage](./src/images/yabee-readme-0.png)
 
 ####Approach / How it works
 
 This app has four main models - User, Advert, Offer and Message. An un-registered user can search the site for things for sale, and things people want to buy. By loggin in a user can create adverts for what they are selling/buying. If an advert mathces an offer then there is an option to send a direct message to that user. On the users profile page there are tabs to view all their current adverts and offers, and each of those has its own section for messages.
 
-![](./project-4-frontend/src/images/yabee-readme-1.png)
+![user_homepage](./src/images/yabee-readme-2.png)
 
 ####The build
 
@@ -22,7 +22,7 @@ This app has four main models - User, Advert, Offer and Message. An un-registere
 * AWS was used for file storage (images of things for sale).
 * User authentication/session uses bcrypt and jwt.
 
-![](./project-4-frontend/src/images/yabee-readme-2.png)
+![messages](./src/images/yabee-readme-1.png)
 
 #### Problems & Challenges
 
