@@ -5,7 +5,7 @@
 ***Yabee*** is a second hand trading application, built with Ruby on Rails. The concept is simple - a user can post an advert about an item they would like to buy, post an offer about an item they are selling, and write messages between eachother when one persons advert matches anothers offer. 
 
 
-![](./project-4-frontend/src/images/yabee-readme-0.png)
+![Welcome](./src/images/yabee-readme-0.png)
 
 ####Approach / How it works
 
