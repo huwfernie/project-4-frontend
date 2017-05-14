@@ -1,64 +1,37 @@
-### Using this Angular Gulp Setup
+# Yabee
 
-To get setup with the starter-code, you first need to run:
+###GA WDI London - Project 4
 
-```sh
-$ bower install && gulp install
-```
+***Yabee*** is a second hand trading application, built with Ruby on Rails. The concept is simple - a user can post an advert about an item they would like to buy, post an offer about an item they are selling, and write messages between eachother when one persons advert matches anothers offer. 
 
-## How is gulp setup?
 
-Rather than trying to manage one giant `gulpfile.js` that is file responsible for creating multiple tasks, each task has been broken out into its own file and placed in a directory `tasks`. Any files in that directory get automatically required in the gulpfile using the `require-dir` npm package.
+![](./project-4-frontend/src/images/yabee-readme-0.png)
 
-To add a new task, simply add a new task file that directory.
+####Approach / How it works
 
-/tasks/default.js specifies the default set of tasks to run
-when you run `gulp`.
+This app has four main models - User, Advert, Offer and Message. An un-registered user can search the site for things for sale, and things people want to buy. By loggin in a user can create adverts for what they are selling/buying. If an advert mathces an offer then there is an option to send a direct message to that user. On the users profile page there are tabs to view all their current adverts and offers, and each of those has its own section for messages.
 
-Configuration options are stored in the `package.json` file.
+![](./project-4-frontend/src/images/yabee-readme-1.png)
 
-When deploying, ensure that a `postinstall` script has been added to
-your package.json, e.g.
+####The build
 
-```json
-"postinstall": "bower install && gulp deploy"
-```
+* HTML 5, SCSS and Angular are used in the frontend
+* Ruby on Rails is used to serve JSON to the app. 
+* The desktop version was styled to be as close to Gumtree as possible.
+* The mobile view was an extension on this theme.
+* AWS was used for file storage (images of things for sale).
+* User authentication/session uses bcrypt and jwt.
 
-This setup expects that there is a bower.json file with at least ONE package
-installed. This will created a bower_components directory after
-the postinstall script has run.
+![](./project-4-frontend/src/images/yabee-readme-2.png)
 
-When deploying, this setup expects that the NODE_ENV is set to `production`.
-Also that the NPM_CONFIG_PRODUCTION is set to `false`. Then you can also set the API_URL to be the correct URL for your deployed app. This will automatically replace `http://localhost:4000` to be the correct url.
+#### Problems & Challenges
 
-You can do this by running:
 
-```bash
-$ heroku config:set NODE_ENV=production
-$ heroku config:set NPM_CONFIG_PRODUCTION=false
+Initially I wanted it to be more focused on people who want to buy things, but I struggled to make this an engaging app so I included much more emphasis on selling than I originally intended.
 
-# An example url
-$ heroku config:set API_URL=https://project-on-heroku.herokuapp.com/
-```
+Working on a messanger system was a good challenge, although the version I have working now is missing a few features:
 
-### Bower overrides
+1. it is only possible to send a message between users who each have a matching advert/offer
+2. There is no notification for recieving a new message.
 
-Sometimes, you might want to `override` the `main` file(s) for a specific Bower component. You can do this directly inside the `bower.json` file like this:
-
-```json
-"overrides": {
-  "bootstrap": {
-    "main": [
-      "dist/css/bootstrap.css",
-      "dist/js/bootstrap.js",
-      "dist/fonts/*"
-    ]
-  },
-  "font-awesome": {
-    "main": [
-      "css/font-awesome.css",
-      "fonts/*"
-    ]
-  }
-},
-```
+However by including the message feature it became a better learning experieince and it will be good to try and work on this in the future. 
