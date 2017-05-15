@@ -1,6 +1,9 @@
 {
   "name": "angular-gulp-setup",
   "version": "1.0.0",
+  "engines": {
+  "node": "7.4.0"
+},
   "description": "A example stack with gulp and angular",
   "main": "index.js",
   "scripts": {
